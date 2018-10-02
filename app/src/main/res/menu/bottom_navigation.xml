@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottom_navigation_social"
+        android:icon="@drawable/bottom_navigation_button_social_normal"
+        android:title="@string/bottom_navigation_social" />
+
+    <item
+        android:id="@+id/bottom_navigation_news"
+        android:icon="@drawable/bottom_navigation_button_news_normal"
+        android:title="@string/bottom_navigation_news" />
+
+    <item
+        android:id="@+id/bottom_navigation_quiz"
+        android:icon="@drawable/bottom_navigation_button_quiz_normal"
+        android:title="@string/bottom_navigation_quiz" />
+
+    <item
+        android:id="@+id/bottom_navigation_about"
+        android:icon="@drawable/bottom_navigation_button_about_normal"
+        android:title="@string/bottom_navigation_about" />
+
+</menu>
