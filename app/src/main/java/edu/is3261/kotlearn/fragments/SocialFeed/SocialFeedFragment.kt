@@ -3,39 +3,18 @@ package edu.is3261.kotlearn.fragments.SocialFeed
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.widget.SwipeRefreshLayout
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.Toast
 
 import edu.is3261.kotlearn.R
-import edu.is3261.kotlearn.json.RedditFeed
-import kotlinx.android.synthetic.main.fragment_social_feed.*
-import net.dean.jraw.http.UserAgent
-import net.dean.jraw.oauth.OAuthHelper
-import net.dean.jraw.RedditClient
-import net.dean.jraw.http.OkHttpNetworkAdapter
-import net.dean.jraw.models.Listing
-import net.dean.jraw.models.Submission
-import net.dean.jraw.models.SubredditSort
-import net.dean.jraw.models.TimePeriod
-import net.dean.jraw.oauth.Credentials
-import org.w3c.dom.Text
-import java.io.PrintWriter
-import java.io.StringWriter
-import java.util.*
+import edu.is3261.kotlearn.feed.RedditFeed
 
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- *
- */
 class SocialFeedFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -43,8 +22,23 @@ class SocialFeedFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_social_feed, container, false)
 
-        // initialize the feed
-        RedditFeed(view.findViewById(R.id.social_feed)).execute()
+        // Lookup the swipe refresh container view
+        val swipeContainer = view.findViewById<SwipeRefreshLayout>(R.id.social_swipe_refresh)
+
+        Toast.makeText(context,getString(R.string.social_feed_placeholder), Toast.LENGTH_SHORT).show()
+        // initialize the feed by downloading data from reddit
+        // pass in context for toasting errors
+        RedditFeed(this.activity!!.applicationContext, view).execute()
+
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(
+                SwipeRefreshLayout.OnRefreshListener {
+                    Log.i("swiperefresh", "onRefresh called from SwipeRefreshLayout")
+                    Toast.makeText(context,"Loading Feed...", Toast.LENGTH_SHORT).show()
+                    // This method performs the actual data-refresh operation.
+                    RedditFeed(this.activity!!.applicationContext, view).execute()
+                }
+        )
 
         return view
     }
