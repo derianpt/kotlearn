@@ -11,4 +11,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--QUIZ LANDING PAGE-->
+    <string name="introduction"> INTRODUCTION </string>
+    <string name="basics"> BASICS </string>
+    <string name="classesAndObjects"> CLASSES AND OBJECTS </string>
 </resources>

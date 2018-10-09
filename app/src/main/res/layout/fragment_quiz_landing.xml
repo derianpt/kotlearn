@@ -1,15 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey"
+    android:orientation="vertical"
     tools:context=".fragments.Quiz.QuizLandingFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="300dp"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/image_introduction"
+            android:layout_width="100dp"
+            android:layout_height="83dp"
+            android:layout_gravity="center"
+            android:src="@drawable/introduction"/>
+
+        <Button
+            android:id="@+id/but_introduction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:textSize="15dp"
+            android:layout_gravity="center"
+            android:background="#00000000"
+            android:text="@string/introduction"/>
+
+        <ImageView
+            android:id="@+id/image_basics"
+            android:layout_width="100dp"
+            android:layout_height="83dp"
+            android:layout_gravity="center"
+            android:src="@drawable/basics"/>
+
+        <Button
+            android:id="@+id/but_basics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:textSize="15dp"
+            android:layout_gravity="center"
+            android:background="#00000000"
+            android:text="@string/basics" />
+
+        <ImageView
+            android:id="@+id/image_classesAndObjects"
+            android:layout_width="100dp"
+            android:layout_height="83dp"
+            android:src="@drawable/classesandobjects"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:id="@+id/but_classesAndObjects"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:textSize="15dp"
+            android:layout_gravity="center"
+            android:background="#00000000"
+            android:text="@string/classesAndObjects" />
+    </LinearLayout>
+
+</LinearLayout>
