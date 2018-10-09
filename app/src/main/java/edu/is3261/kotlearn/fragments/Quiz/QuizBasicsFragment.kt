@@ -23,7 +23,7 @@ class QuizBasicsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_quiz_basics2, container, false)
+        return inflater.inflate(R.layout.fragment_quiz_basics, container, false)
     }
 
 
