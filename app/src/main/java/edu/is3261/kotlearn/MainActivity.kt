@@ -1,5 +1,7 @@
 package edu.is3261.kotlearn
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.ActionBar
@@ -35,11 +37,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        createSocialFeedFragment()
-
+        if(savedInstanceState==null) {
+            createSocialFeedFragment()
+        }
         toolbar = supportActionBar!!
+        // changing color of ActionBar
+        toolbar.setBackgroundDrawable(ColorDrawable(Color.parseColor("#003366")))
+        toolbar.setIcon(R.drawable.basics)
         val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigation.setOnNavigationItemSelectedListener (mOnNavigationItemSelectorException)
+
+
     }
 
     fun createSocialFeedFragment(){
