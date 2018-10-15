@@ -1,6 +1,5 @@
-package edu.is3261.kotlearn.fragments.SocialFeed
+package edu.is3261.kotlearn.adapters
 
-import android.content.Context
 import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -8,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import edu.is3261.kotlearn.R
 import edu.is3261.kotlearn.feed.SocialPost
-import android.support.v4.content.ContextCompat.startActivity
 import android.content.Intent
 import android.net.Uri
 
@@ -31,7 +29,7 @@ class MyAdapter(var myDataSet: ArrayList<SocialPost>) : RecyclerView.Adapter<MyA
     }
 
     // Create new views (invoked by the layout manager)
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyAdapter.MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         // create a new view
         val cardView = LayoutInflater.from(parent.context)
                 .inflate(R.layout.feed_row, parent, false) as CardView

@@ -3,9 +3,10 @@ package edu.is3261.kotlearn.fragments.SocialFeed
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
+import android.support.v4.app.FragmentStatePagerAdapter
+import android.support.v4.view.ViewPager
 import android.support.v4.widget.SwipeRefreshLayout
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -26,22 +27,19 @@ class SocialFeedFragment : Fragment() {
         val swipeContainer = view.findViewById<SwipeRefreshLayout>(R.id.social_swipe_refresh)
 
         Toast.makeText(context,getString(R.string.social_feed_placeholder), Toast.LENGTH_SHORT).show()
-        // initialize the feed by downloading data from reddit
+
+        // populate the feed by 1) downloading data from reddit and 2) populating swipeContainer
         // pass in context for toasting errors
         RedditFeed(this.activity!!.applicationContext, view).execute()
 
         // Setup refresh listener which triggers new data loading
-        swipeContainer.setOnRefreshListener(
-                SwipeRefreshLayout.OnRefreshListener {
-                    Log.i("swiperefresh", "onRefresh called from SwipeRefreshLayout")
-                    Toast.makeText(context,"Loading Feed...", Toast.LENGTH_SHORT).show()
-                    // This method performs the actual data-refresh operation.
-                    RedditFeed(this.activity!!.applicationContext, view).execute()
-                }
-        )
+        swipeContainer.setOnRefreshListener {
+            Log.i("swiperefresh", "onRefresh called from SwipeRefreshLayout")
+            Toast.makeText(context,"Loading Feed...", Toast.LENGTH_SHORT).show()
+            // This method performs the actual data-refresh operation.
+            RedditFeed(this.activity!!.applicationContext, view).execute()
+        }
 
         return view
     }
-
-
 }

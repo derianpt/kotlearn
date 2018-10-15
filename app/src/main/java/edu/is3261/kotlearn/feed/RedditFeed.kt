@@ -2,7 +2,6 @@ package edu.is3261.kotlearn.feed
 
 import android.content.Context
 import android.os.AsyncTask
-import android.support.v4.content.res.TypedArrayUtils.getString
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -10,7 +9,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import edu.is3261.kotlearn.R
-import edu.is3261.kotlearn.fragments.SocialFeed.MyAdapter
+import edu.is3261.kotlearn.adapters.MyAdapter
 import net.dean.jraw.RedditClient
 import net.dean.jraw.http.OkHttpNetworkAdapter
 import net.dean.jraw.http.UserAgent
