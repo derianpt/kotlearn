@@ -11,23 +11,22 @@
         android:id="@+id/social_parent_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"
         android:text="@string/social_parent_header"
-        android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+        android:textAppearance="@android:style/TextAppearance.Material.Large" />
 
     <TextView
         android:id="@+id/social_parent_body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/social_parent_body" />
+        android:text="@string/social_parent_body"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium" />
 
 
     <android.support.design.widget.TabLayout
         android:id="@+id/social_parent_tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="visible"
-        app:tabMode="fixed">
+        android:visibility="visible">
 
     </android.support.design.widget.TabLayout>
 

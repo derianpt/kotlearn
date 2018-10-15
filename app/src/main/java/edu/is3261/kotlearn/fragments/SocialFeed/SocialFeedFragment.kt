@@ -35,7 +35,7 @@ class SocialFeedFragment : Fragment() {
         // Setup refresh listener which triggers new data loading
         swipeContainer.setOnRefreshListener {
             Log.i("swiperefresh", "onRefresh called from SwipeRefreshLayout")
-            Toast.makeText(context,"Loading Feed...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,getString(R.string.social_feed_placeholder), Toast.LENGTH_SHORT).show()
             // This method performs the actual data-refresh operation.
             RedditFeed(this.activity!!.applicationContext, view).execute()
         }
