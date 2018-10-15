@@ -7,6 +7,7 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import edu.is3261.kotlearn.fragments.NewsFeed.NewsFeedFragment
 import edu.is3261.kotlearn.fragments.Quiz.QuizLandingFragment
 import edu.is3261.kotlearn.fragments.SocialFeed.SocialFeedFragment
 import edu.is3261.kotlearn.fragments.SocialFeed.SocialFeedParentFragment
@@ -21,7 +22,8 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.bottom_navigation_news -> {
-
+                createNewsFeedFragment()
+                return@OnNavigationItemSelectedListener true
             }
             R.id.bottom_navigation_quiz -> {
                 createQuizLandingFragment()
@@ -43,15 +45,12 @@ class MainActivity : AppCompatActivity() {
         if(savedInstanceState==null) {
             createSocialFeedFragment()
         }
-        Log.v("","finished")
         toolbar = supportActionBar!!
         // changing color of ActionBar
         toolbar.setBackgroundDrawable(ColorDrawable(Color.parseColor("#003366")))
         toolbar.setIcon(R.drawable.basics)
         val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigation.setOnNavigationItemSelectedListener (mOnNavigationItemSelectorException)
-
-        Log.v("","finished bottomNav")
     }
 
     fun createSocialFeedFragment(){
@@ -60,17 +59,20 @@ class MainActivity : AppCompatActivity() {
         transaction.replace(R.id.fragmentholder, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
-        Log.v("", "social feed frag")
     }
 
+    fun createNewsFeedFragment(){
+        val transaction = manager.beginTransaction()
+        val fragment = NewsFeedFragment()
+        transaction.replace(R.id.fragmentholder,fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
     fun createQuizLandingFragment(){
         val transaction = manager.beginTransaction()
         val fragment = QuizLandingFragment()
         transaction.replace(R.id.fragmentholder, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
-        Log.v("","quiz frag")
     }
-
-
 }
