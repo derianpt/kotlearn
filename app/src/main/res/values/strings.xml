@@ -5,6 +5,14 @@
     <string name="bottom_navigation_quiz">Quiz</string>
     <string name="bottom_navigation_about">About</string>
 
+    <!--Social Tab-->
+    <string name="social_parent_header">Kotlin Social</string>
+    <string name="social_parent_body">Read the latest posts from Reddit r/Kotlin and StackOverflow!</string>
+
+    <!--News Tab-->
+    <string name="news_feed_header">Kotlin News</string>
+    <string name="news_feed_body">Read the latest Kotlin news on Twitter!</string>
+    
     <!--Reddit Feed-->
     <string name="social_feed_placeholder">Loading feed...</string>
     <string name="social_feed_done">Loading finished!</string>
