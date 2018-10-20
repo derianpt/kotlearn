@@ -26,8 +26,6 @@ class HashtagTimelineFragment : Fragment() {
         // Lookup the swipe refresh container view
         val swipeContainer = view.findViewById<SwipeRefreshLayout>(R.id.hashtag_timeline_swipe_refresh)
 
-//        Toast.makeText(context, getString(R.string.loading_feed), Toast.LENGTH_SHORT).show()
-
         // init hashtag timeline. don't put this in initHashtagTimeline because we should not reapeatedly do this.
         hashtagTimeline = SearchTimeline.Builder().query("#kotlin").build()
 
@@ -36,7 +34,6 @@ class HashtagTimelineFragment : Fragment() {
 
         // Setup refresh listener which triggers new data loading
         swipeContainer.setOnRefreshListener {
-//            Toast.makeText(context, getString(R.string.loading_feed), Toast.LENGTH_SHORT).show()
             // This method performs the actual data-refresh operation.
             initHashtagTimeline(view)
         }
@@ -49,7 +46,7 @@ class HashtagTimelineFragment : Fragment() {
         var viewAdapter = TweetTimelineRecyclerViewAdapter.Builder(this.context)
                 .setTimeline(hashtagTimeline)
                 .setViewStyle(R.style.tw__TweetLightWithActionsStyle)
-                .build();
+                .build()
 
         // configure the recycler view contains our timeline.
         view.findViewById<RecyclerView>(R.id.hashtag_timeline_recycler_view).apply {
@@ -65,7 +62,6 @@ class HashtagTimelineFragment : Fragment() {
             adapter = viewAdapter
         }
         view.findViewById<SwipeRefreshLayout>(R.id.hashtag_timeline_swipe_refresh).isRefreshing = false
-//        Toast.makeText(context, context?.getString(R.string.loaded_feed), Toast.LENGTH_SHORT).show()
     }
 
 
