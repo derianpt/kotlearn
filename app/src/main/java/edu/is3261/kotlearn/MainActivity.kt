@@ -55,17 +55,8 @@ class MainActivity : AppCompatActivity() {
         toolbar.setIcon(R.drawable.basics)
         val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectorException)
-
-        // initialize twitter feed for later use! Takes CONSUMER_KEY and CONSUMER_SECRET defined in
-        // secrets.xml
-        val authConfig = TwitterAuthConfig(resources.getString(R.string.twitter_CONSUMER_KEY), resources.getString(R.string.twitter_CONSUMER_SECRET))
-        Log.d("mainActivity", "authConfig: ${authConfig.consumerKey} , ${authConfig.consumerSecret}")
-        val config = TwitterConfig.Builder(this)
-                .logger(DefaultLogger(Log.DEBUG))
-                .twitterAuthConfig(authConfig)
-                .debug(true)
-                .build()
-        Twitter.initialize(config)
+        // initialise twitter client
+        initTwitter()
     }
 
     fun createSocialFeedFragment() {
@@ -90,5 +81,18 @@ class MainActivity : AppCompatActivity() {
         transaction.replace(R.id.fragmentholder, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
+    }
+
+    fun initTwitter(){
+        // initialize twitter feed for later use! Takes CONSUMER_KEY and CONSUMER_SECRET defined in
+        // secrets.xml
+        val authConfig = TwitterAuthConfig(resources.getString(R.string.twitter_CONSUMER_KEY),
+                resources.getString(R.string.twitter_CONSUMER_SECRET))
+        val config = TwitterConfig.Builder(this)
+                .logger(DefaultLogger(Log.DEBUG))
+                .twitterAuthConfig(authConfig)
+                .debug(true)
+                .build()
+        Twitter.initialize(config)
     }
 }
