@@ -25,7 +25,7 @@ class SocialFeedFragment : Fragment() {
         // Lookup the swipe refresh container view
         val swipeContainer = view.findViewById<SwipeRefreshLayout>(R.id.social_swipe_refresh)
 
-        Toast.makeText(context,getString(R.string.social_feed_placeholder), Toast.LENGTH_SHORT).show()
+        Toast.makeText(context,getString(R.string.loading_feed), Toast.LENGTH_SHORT).show()
         // initialize the feed by downloading data from reddit
         // pass in context for toasting errors
         RedditFeed(this.activity!!.applicationContext, view).execute()
