@@ -137,3 +137,6 @@ $RECYCLE.BIN/
 
 # VScode
 .vscode
+
+#contains application secrets
+secrets.xml
