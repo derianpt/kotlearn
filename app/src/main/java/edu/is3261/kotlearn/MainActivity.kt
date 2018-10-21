@@ -87,8 +87,8 @@ class MainActivity : AppCompatActivity() {
     fun initTwitter() {
         // initialize twitter feed for later use! Takes CONSUMER_KEY and CONSUMER_SECRET defined in
         // secrets.xml
-        val authConfig = TwitterAuthConfig(resources.getString(R.string.twitter_CONSUMER_KEY),
-                resources.getString(R.string.twitter_CONSUMER_SECRET))
+        val authConfig = TwitterAuthConfig(resources.getString(R.string.TWITTER_CONSUMER_KEY),
+                resources.getString(R.string.TWITTER_CONSUMER_SECRET))
         val config = TwitterConfig.Builder(this)
                 .logger(DefaultLogger(Log.DEBUG))
                 .twitterAuthConfig(authConfig)
