@@ -26,7 +26,7 @@ class SocialFeedFragment : Fragment() {
         // Lookup the swipe refresh container view
         val swipeContainer = view.findViewById<SwipeRefreshLayout>(R.id.social_swipe_refresh)
 
-        Toast.makeText(context,getString(R.string.social_feed_placeholder), Toast.LENGTH_SHORT).show()
+        Toast.makeText(context,getString(R.string.loading_feed), Toast.LENGTH_SHORT).show()
 
         // populate the feed by 1) downloading data from reddit and 2) populating swipeContainer
         // pass in context for toasting errors
@@ -35,7 +35,7 @@ class SocialFeedFragment : Fragment() {
         // Setup refresh listener which triggers new data loading
         swipeContainer.setOnRefreshListener {
             Log.i("swiperefresh", "onRefresh called from SwipeRefreshLayout")
-            Toast.makeText(context,getString(R.string.social_feed_placeholder), Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,getString(R.string.loading_feed), Toast.LENGTH_SHORT).show()
             // This method performs the actual data-refresh operation.
             RedditFeed(this.activity!!.applicationContext, view).execute()
         }

@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import edu.is3261.kotlearn.R
-import edu.is3261.kotlearn.adapters.MyPagerAdapter
+import edu.is3261.kotlearn.adapters.SocialPagerAdapter
 import kotlinx.android.synthetic.main.fragment_social_parent.*
 
 class SocialFeedParentFragment : Fragment() {
@@ -19,22 +19,17 @@ class SocialFeedParentFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_social_parent, container, false)
 
+        val fragmentAdapter = SocialPagerAdapter(childFragmentManager)
+
         val viewPager = view.findViewById<ViewPager>(R.id.social_parent_viewpager)
 
-        val fragmentAdapter = MyPagerAdapter(childFragmentManager)
-        Log.d(logTag, fragmentAdapter.toString())
-        Log.d(logTag, fragmentAdapter.getPageTitle(0).toString())
         viewPager.adapter = fragmentAdapter
 
-        val tabs = view.findViewById<TabLayout>(R.id.social_parent_tabs)
-        if (tabs == null) {
-            Log.d(logTag, "THE TAB IS NULL???")
-        } else {
-            Log.d(logTag, "Before: ${tabs.tabCount}")
-            tabs.setupWithViewPager(this.social_parent_viewpager)
-            Log.d(logTag, "After: ${tabs.tabCount}")
-        }
+        val tabLayout = view.findViewById<TabLayout>(R.id.social_parent_tabs)
+
+        tabLayout.setupWithViewPager(viewPager, true)
 
         return view
+
     }
 }

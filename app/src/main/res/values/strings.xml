@@ -7,18 +7,18 @@
 
     <!--Social Tab-->
     <string name="social_parent_header">Kotlin Social</string>
-    <string name="social_parent_body">Read the latest posts from Reddit r/Kotlin and StackOverflow!</string>
+    <string name="social_parent_body">Read the latest posts from Reddit!</string>
 
     <!--News Tab-->
     <string name="news_feed_header">Kotlin News</string>
     <string name="news_feed_body">Read the latest Kotlin news on Twitter!</string>
 
     <!--Reddit Feed-->
-    <string name="social_feed_placeholder">Loading feed...</string>
-    <string name="social_feed_done">Loading finished!</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--Common placeholders-->
+    <string name="loading_feed">Loading feed...</string>
+    <string name="loaded_feed">Loading finished!</string>
+    <string name="hello_blank_fragment">hello</string>
 
     <!--QUIZ LANDING PAGE-->
     <string name="introduction"> INTRODUCTION </string>

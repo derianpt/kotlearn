@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".fragments.SocialFeed.SocialFeedParentFragment">
 
     <TextView
         android:id="@+id/social_parent_header"
@@ -21,14 +21,11 @@
         android:text="@string/social_parent_body"
         android:textAppearance="@android:style/TextAppearance.Material.Medium" />
 
-
     <android.support.design.widget.TabLayout
         android:id="@+id/social_parent_tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="visible">
-
-    </android.support.design.widget.TabLayout>
+        app:tabMode="fixed" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/social_parent_viewpager"

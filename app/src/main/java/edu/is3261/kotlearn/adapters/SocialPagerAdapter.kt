@@ -7,38 +7,32 @@ import android.util.Log
 import edu.is3261.kotlearn.fragments.Quiz.QuizLandingFragment
 import edu.is3261.kotlearn.fragments.SocialFeed.SocialFeedFragment
 
-class MyPagerAdapter (fm: FragmentManager) : FragmentPagerAdapter(fm){
-    private val logTag = "fragmentPagerAdapter"
+class SocialPagerAdapter (fm: FragmentManager) : FragmentPagerAdapter(fm){
+    override fun getCount(): Int {
+        return 2
+    }
 
     override fun getItem(position: Int): Fragment {
         return when (position) {
             0 -> {
-                Log.d(logTag, "tab 0 Fragment")
                 SocialFeedFragment()
             }
             1 -> {
-                Log.d(logTag, "tab 1 Fragment")
                 QuizLandingFragment()
             }
             else -> SocialFeedFragment()
         }
     }
 
-    override fun getCount(): Int {
-        return 2
-    }
-
     override fun getPageTitle(position: Int): CharSequence {
         return when (position) {
             0 -> {
-                Log.d(logTag, "tab 0 title")
-                "Reddit"
+                "r/Kotlin"
             }
             1 -> {
-                Log.d(logTag, "tab 1 title")
-                "Stackoverflow"
+                "r/Android"
             }
-            else -> "what"
+            else -> "r/Kotlin"
         }
     }
 }

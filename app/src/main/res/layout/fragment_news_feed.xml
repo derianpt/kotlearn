@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".fragments.NewsFeed.NewsFeedFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:id="@+id/news_feed_header"
         android:layout_width="match_parent"
@@ -21,21 +21,15 @@
         android:text="@string/news_feed_body"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-    <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/news_swipe_refresh"
+    <android.support.design.widget.TabLayout
+        android:id="@+id/news_feed_tabs"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        app:tabMode="fixed" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/news_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="vertical">
-
-        </android.support.v7.widget.RecyclerView>
-    </android.support.v4.widget.SwipeRefreshLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/news_feed_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
