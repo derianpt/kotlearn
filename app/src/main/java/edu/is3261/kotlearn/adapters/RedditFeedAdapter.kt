@@ -6,12 +6,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import edu.is3261.kotlearn.R
-import edu.is3261.kotlearn.feed.SocialPost
+import edu.is3261.kotlearn.feed_builders.RedditPost
 import android.content.Intent
 import android.net.Uri
 
 
-class MyAdapter(var myDataSet: ArrayList<SocialPost>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+class MyAdapter(var myDataSet: ArrayList<RedditPost>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder.
@@ -32,7 +32,7 @@ class MyAdapter(var myDataSet: ArrayList<SocialPost>) : RecyclerView.Adapter<MyA
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         // create a new view
         val cardView = LayoutInflater.from(parent.context)
-                .inflate(R.layout.feed_row, parent, false) as CardView
+                .inflate(R.layout.reddit_timeline_row, parent, false) as CardView
         return MyViewHolder(cardView)
     }
 
@@ -57,7 +57,7 @@ class MyAdapter(var myDataSet: ArrayList<SocialPost>) : RecyclerView.Adapter<MyA
     }
 
     // Add a list of items
-    public fun addAll(list: ArrayList<SocialPost>){
+    public fun addAll(list: ArrayList<RedditPost>){
         myDataSet.addAll(list)
         this.notifyDataSetChanged()
     }

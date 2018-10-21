@@ -11,9 +11,9 @@ import com.twitter.sdk.android.core.DefaultLogger
 import com.twitter.sdk.android.core.Twitter
 import com.twitter.sdk.android.core.TwitterAuthConfig
 import com.twitter.sdk.android.core.TwitterConfig
-import edu.is3261.kotlearn.fragments.NewsFeed.NewsFeedFragment
 import edu.is3261.kotlearn.fragments.Quiz.QuizLandingFragment
-import edu.is3261.kotlearn.fragments.SocialFeed.SocialFeedParentFragment
+import edu.is3261.kotlearn.fragments.RedditFeed.RedditParentFragment
+import edu.is3261.kotlearn.fragments.TwitterFeed.TwitterParentFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -22,11 +22,11 @@ class MainActivity : AppCompatActivity() {
     private val mOnNavigationItemSelectorException = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.bottom_navigation_social -> {
-                createSocialFeedFragment()
+                createRedditFeedFragment()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.bottom_navigation_news -> {
-                createNewsFeedFragment()
+                createTwitterFeedFragment()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.bottom_navigation_quiz -> {
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         if (savedInstanceState == null) {
-            createSocialFeedFragment()
+            createRedditFeedFragment()
         }
         toolbar = supportActionBar!!
         // changing color of ActionBar
@@ -60,17 +60,17 @@ class MainActivity : AppCompatActivity() {
         initTwitter()
     }
 
-    fun createSocialFeedFragment() {
+    fun createRedditFeedFragment() {
         val transaction = manager.beginTransaction()
-        val fragment = SocialFeedParentFragment()
+        val fragment = RedditParentFragment()
         transaction.replace(R.id.fragmentholder, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
     }
 
-    fun createNewsFeedFragment() {
+    fun createTwitterFeedFragment() {
         val transaction = manager.beginTransaction()
-        val fragment = NewsFeedFragment()
+        val fragment = TwitterParentFragment()
         transaction.replace(R.id.fragmentholder, fragment)
         transaction.addToBackStack(null)
         transaction.commit()

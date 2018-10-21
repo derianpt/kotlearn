@@ -1,4 +1,4 @@
-package edu.is3261.kotlearn.feed
+package edu.is3261.kotlearn.feed_builders
 
 import android.content.Context
 import android.os.AsyncTask
@@ -27,7 +27,7 @@ import kotlin.collections.ArrayList
 
 class RedditFeed(var context: Context, var view: View) : AsyncTask<Void, Void, String>() {
 
-    lateinit var apiResult: ArrayList<SocialPost>
+    lateinit var apiResult: ArrayList<RedditPost>
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
@@ -93,8 +93,8 @@ class RedditFeed(var context: Context, var view: View) : AsyncTask<Void, Void, S
         return redditClient
     }
 
-    // pull the relevant info from reddit API, returning a list of SocialPost objects
-    fun pullSubredditInfo(redditClient: RedditClient): ArrayList<SocialPost> {
+    // pull the relevant info from reddit API, returning a list of RedditPost objects
+    fun pullSubredditInfo(redditClient: RedditClient): ArrayList<RedditPost> {
         val kotlinSubreddit = redditClient.subreddit("kotlin")
         val subredditFrontPage = kotlinSubreddit.posts()
                 .limit(10)
@@ -102,7 +102,7 @@ class RedditFeed(var context: Context, var view: View) : AsyncTask<Void, Void, S
                 .timePeriod(TimePeriod.WEEK)
                 .build()
         val posts: Listing<Submission> = subredditFrontPage.next()
-        var feedList = ArrayList<SocialPost>()
+        var feedList = ArrayList<RedditPost>()
         for (post in posts) {
 //            if (post.hasThumbnail()){
 //                Log.d("thumbnail", post.thumbnail)
@@ -116,7 +116,7 @@ class RedditFeed(var context: Context, var view: View) : AsyncTask<Void, Void, S
 //                Log.d("embedded", "NO EMBEDDED FOR ${post.title}")
 //            }
 
-            var currPost = SocialPost(post.title, "By ${post.author}", calculateAgo(post.created),
+            var currPost = RedditPost(post.title, "By ${post.author}", calculateAgo(post.created),
                     "https://reddit.com${post.permalink}")
             feedList.add(currPost)
         }

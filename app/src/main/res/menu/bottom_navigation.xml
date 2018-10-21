@@ -3,13 +3,13 @@
 
     <item
         android:id="@+id/bottom_navigation_social"
-        android:icon="@drawable/bottom_navigation_button_social_normal"
-        android:title="@string/bottom_navigation_social" />
+        android:icon="@drawable/bottom_navigation_button_reddit"
+        android:title="@string/bottom_navigation_reddit" />
 
     <item
         android:id="@+id/bottom_navigation_news"
-        android:icon="@drawable/bottom_navigation_button_news_normal"
-        android:title="@string/bottom_navigation_news" />
+        android:icon="@drawable/tw__composer_logo_blue"
+        android:title="@string/bottom_navigation_twitter" />
 
     <item
         android:id="@+id/bottom_navigation_quiz"

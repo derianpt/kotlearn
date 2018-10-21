@@ -1,4 +1,4 @@
-package edu.is3261.kotlearn.fragments.NewsFeed
+package edu.is3261.kotlearn.fragments.TwitterFeed
 
 
 import android.os.Bundle
@@ -9,12 +9,10 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.twitter.sdk.android.tweetui.TweetTimelineRecyclerViewAdapter
 import com.twitter.sdk.android.tweetui.UserTimeline
 
 import edu.is3261.kotlearn.R
-import kotlinx.android.synthetic.main.fragment_user_timeline.view.*
 
 class UserTimelineFragment : Fragment() {
 
@@ -23,7 +21,7 @@ class UserTimelineFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_user_timeline, container, false)
+        val view = inflater.inflate(R.layout.fragment_twitter_user_timeline, container, false)
 
         // Lookup the swipe refresh container view
         val swipeContainer = view.findViewById<SwipeRefreshLayout>(R.id.user_timeline_swipe_refresh)

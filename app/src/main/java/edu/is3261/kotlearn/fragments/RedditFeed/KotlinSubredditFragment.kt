@@ -1,11 +1,8 @@
-package edu.is3261.kotlearn.fragments.SocialFeed
+package edu.is3261.kotlearn.fragments.RedditFeed
 
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentStatePagerAdapter
-import android.support.v4.view.ViewPager
 import android.support.v4.widget.SwipeRefreshLayout
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,14 +11,14 @@ import android.view.ViewGroup
 import android.widget.Toast
 
 import edu.is3261.kotlearn.R
-import edu.is3261.kotlearn.feed.RedditFeed
+import edu.is3261.kotlearn.feed_builders.RedditFeed
 
-class SocialFeedFragment : Fragment() {
+class KotlinSubredditFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_social_feed, container, false)
+        val view = inflater.inflate(R.layout.fragment_reddit_kotlin_subreddit, container, false)
 
         // Lookup the swipe refresh container view
         val swipeContainer = view.findViewById<SwipeRefreshLayout>(R.id.social_swipe_refresh)
