@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import edu.is3261.kotlearn.fragments.Quiz.QuizLandingFragment
+import edu.is3261.kotlearn.fragments.RedditFeed.AndroidSubredditFragment
 import edu.is3261.kotlearn.fragments.RedditFeed.KotlinSubredditFragment
 
 class RedditPagerAdapter (fm: FragmentManager) : FragmentPagerAdapter(fm){
@@ -17,7 +18,7 @@ class RedditPagerAdapter (fm: FragmentManager) : FragmentPagerAdapter(fm){
                 KotlinSubredditFragment()
             }
             1 -> {
-                QuizLandingFragment()
+                AndroidSubredditFragment()
             }
             else -> KotlinSubredditFragment()
         }

@@ -12,10 +12,8 @@ import android.net.Uri
 
 
 class MyAdapter(var myDataSet: ArrayList<RedditPost>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+
     // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder.
-    // Each data item is just a string in this case that is shown in a TextView.
     class MyViewHolder(v: CardView) : RecyclerView.ViewHolder(v) {
         var postTitle: TextView = v.findViewById(R.id.post_title)
         var postAuthor: TextView = v.findViewById(R.id.post_author)
@@ -49,16 +47,4 @@ class MyAdapter(var myDataSet: ArrayList<RedditPost>) : RecyclerView.Adapter<MyA
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount(): Int = myDataSet.size
-
-    // Clean all elements of the recycler
-    public fun clear(){
-        myDataSet.removeAll(myDataSet)
-        this.notifyDataSetChanged()
-    }
-
-    // Add a list of items
-    public fun addAll(list: ArrayList<RedditPost>){
-        myDataSet.addAll(list)
-        this.notifyDataSetChanged()
-    }
 }
