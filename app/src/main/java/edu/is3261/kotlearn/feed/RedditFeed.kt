@@ -70,7 +70,7 @@ class RedditFeed(var context: Context, var view: View) : AsyncTask<Void, Void, S
             adapter = viewAdapter
         }
         view.findViewById<SwipeRefreshLayout>(R.id.social_swipe_refresh).isRefreshing = false
-        Toast.makeText(context, context.getString(R.string.social_feed_done), Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, context.getString(R.string.loaded_feed), Toast.LENGTH_SHORT).show()
     }
 
     // initialize reddit client by requesting for access token for userless app.
