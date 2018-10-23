@@ -5,21 +5,21 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".fragments.NewsFeed.NewsFeedFragment">
+    tools:context=".fragments.TwitterFeed.TwitterParentFragment">
 
     <TextView
         android:id="@+id/news_feed_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/news_feed_header"
-        android:textAppearance="@android:style/TextAppearance.Material.Large" />
+        android:text="@string/twitter_parent_header"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium" />
 
     <TextView
         android:id="@+id/news_feed_body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/news_feed_body"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        android:text="@string/twitter_parent_body"
+        android:textAppearance="@android:style/TextAppearance.Material.Small" />
 
     <android.support.design.widget.TabLayout
         android:id="@+id/news_feed_tabs"

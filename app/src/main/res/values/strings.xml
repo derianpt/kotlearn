@@ -1,24 +1,22 @@
 <resources>
     <string name="app_name">Kotlearn</string>
-    <string name="bottom_navigation_social">Social</string>
-    <string name="bottom_navigation_news">News</string>
+    <string name="bottom_navigation_reddit">Reddit</string>
+    <string name="bottom_navigation_twitter">Twitter</string>
     <string name="bottom_navigation_quiz">Quiz</string>
     <string name="bottom_navigation_about">About</string>
 
-    <!--Social Tab-->
-    <string name="social_parent_header">Kotlin Social</string>
-    <string name="social_parent_body">Read the latest posts from Reddit r/Kotlin and StackOverflow!</string>
+    <!--Reddit-->
+    <string name="reddit_parent_header">Kotlin @ Reddit</string>
+    <string name="reddit_parent_body">Read the latest Kotlin posts on Reddit!</string>
 
-    <!--News Tab-->
-    <string name="news_feed_header">Kotlin News</string>
-    <string name="news_feed_body">Read the latest Kotlin news on Twitter!</string>
-
-    <!--Reddit Feed-->
+    <!--Twitter-->
+    <string name="twitter_parent_header">Kotlin @ Twitter</string>
+    <string name="twitter_parent_body">Read the latest Kotlin news on Twitter!</string>
 
     <!--Common placeholders-->
     <string name="loading_feed">Loading feed...</string>
     <string name="loaded_feed">Loading finished!</string>
-    <string name="hello_blank_fragment">hello</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--QUIZ LANDING PAGE-->
     <string name="introduction"> INTRODUCTION </string>

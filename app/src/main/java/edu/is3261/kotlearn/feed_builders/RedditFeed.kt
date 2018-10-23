@@ -1,8 +1,7 @@
-package edu.is3261.kotlearn.feed
+package edu.is3261.kotlearn.feed_builders
 
 import android.content.Context
 import android.os.AsyncTask
-import android.support.v4.content.res.TypedArrayUtils.getString
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -10,7 +9,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import edu.is3261.kotlearn.R
-import edu.is3261.kotlearn.fragments.SocialFeed.MyAdapter
+import edu.is3261.kotlearn.adapters.MyAdapter
 import net.dean.jraw.RedditClient
 import net.dean.jraw.http.OkHttpNetworkAdapter
 import net.dean.jraw.http.UserAgent
@@ -20,45 +19,36 @@ import net.dean.jraw.models.SubredditSort
 import net.dean.jraw.models.TimePeriod
 import net.dean.jraw.oauth.Credentials
 import net.dean.jraw.oauth.OAuthHelper
+import net.dean.jraw.pagination.DefaultPaginator
 import java.io.PrintWriter
 import java.io.StringWriter
 import java.util.*
 import kotlin.collections.ArrayList
 
 
-class RedditFeed(var context: Context, var view: View) : AsyncTask<Void, Void, String>() {
+class RedditFeed(var context: Context, var view: View, var subreddit: String) : AsyncTask<Void, Void, DefaultPaginator<Submission>>() {
 
-    lateinit var apiResult: ArrayList<SocialPost>
+    private lateinit var feedList : ArrayList<RedditPost>
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
 
-    override fun doInBackground(vararg params: Void?): String {
+    override fun doInBackground(vararg params: Void?): DefaultPaginator<Submission> {
         val redditClient = initRedditClient()
-
-        if (redditClient != null) {
-            apiResult = pullSubredditInfo(redditClient)
-            if (apiResult.isEmpty()) {
-                Log.d("apiResult", apiResult.toString())
-                return "api result is empty!!"
-            }
-            Log.d("apiResult", apiResult.toString())
-            return "success"
-        } else {
-            return "reddit client couldn't be initialized!"
-        }
+        return pullSubredditInfo(redditClient!!)
     }
 
-    override fun onPostExecute(result: String) {
+    override fun onPostExecute(result: DefaultPaginator<Submission>) {
         super.onPostExecute(result)
-        if (!result.equals("success")) {
-            Toast.makeText(context, result, Toast.LENGTH_SHORT)
-            return
-        }
 
         viewManager = LinearLayoutManager(context)
-        viewAdapter = MyAdapter(apiResult)
-        recyclerView = view.findViewById<RecyclerView>(R.id.social_recycler_view).apply {
+        viewAdapter = MyAdapter(feedList)
+        if (subreddit.equals("kotlin")){
+            recyclerView = view.findViewById(R.id.kotlin_subreddit_recycler_view)
+        }else {
+            recyclerView = view.findViewById(R.id.android_subreddit_recycler_view)
+        }
+        recyclerView.apply {
             // use this setting to improve performance if you know that changes
             // in content do not change the layout size of the RecyclerView
             setHasFixedSize(true)
@@ -69,7 +59,12 @@ class RedditFeed(var context: Context, var view: View) : AsyncTask<Void, Void, S
             // specify an viewAdapter (see also next example)
             adapter = viewAdapter
         }
-        view.findViewById<SwipeRefreshLayout>(R.id.social_swipe_refresh).isRefreshing = false
+        if (subreddit.equals("kotlin")){
+            view.findViewById<SwipeRefreshLayout>(R.id.kotlin_subreddit_swipe_refresh).isRefreshing = false
+        }else {
+            view.findViewById<SwipeRefreshLayout>(R.id.android_subreddit_swipe_refresh).isRefreshing = false
+        }
+
         Toast.makeText(context, context.getString(R.string.loaded_feed), Toast.LENGTH_SHORT).show()
     }
 
@@ -84,7 +79,7 @@ class RedditFeed(var context: Context, var view: View) : AsyncTask<Void, Void, S
         // Authenticate and get a RedditClient instance
         val redditClient = try {
             OAuthHelper.automatic(adapter,
-                    Credentials.userlessApp("wvK0dL-fBig2-A", UUID.randomUUID()))
+                    Credentials.userlessApp(context.resources.getString(R.string.REDDIT_APP_ID), UUID.randomUUID()))
         } catch (e: Exception) {
             val sw = StringWriter()
             e.printStackTrace(PrintWriter(sw))
@@ -94,34 +89,22 @@ class RedditFeed(var context: Context, var view: View) : AsyncTask<Void, Void, S
         return redditClient
     }
 
-    // pull the relevant info from reddit API, returning a list of SocialPost objects
-    fun pullSubredditInfo(redditClient: RedditClient): ArrayList<SocialPost> {
-        val kotlinSubreddit = redditClient.subreddit("kotlin")
-        val subredditFrontPage = kotlinSubreddit.posts()
+    // pull the relevant info from reddit API, returning a list of RedditPost objects
+    fun pullSubredditInfo(redditClient: RedditClient): DefaultPaginator<Submission> {
+        val kotlinSubreddit = redditClient.subreddit(subreddit)
+        val subredditPaginator = kotlinSubreddit.posts()
                 .limit(10)
-                .sorting(SubredditSort.HOT)
+                .sorting(SubredditSort.TOP)
                 .timePeriod(TimePeriod.WEEK)
                 .build()
-        val posts: Listing<Submission> = subredditFrontPage.next()
-        var feedList = ArrayList<SocialPost>()
+        val posts: Listing<Submission> = subredditPaginator.next()
+        feedList = ArrayList()
         for (post in posts) {
-//            if (post.hasThumbnail()){
-//                Log.d("thumbnail", post.thumbnail)
-//            }else{
-//                Log.d("thumbnail", "NO THUMBNAIL FOR ${post.title}")
-//            }
-//
-//            if (post.embeddedMedia != null){
-//                Log.d("embedded", post.embeddedMedia.toString())
-//            }else{
-//                Log.d("embedded", "NO EMBEDDED FOR ${post.title}")
-//            }
-
-            var currPost = SocialPost(post.title, "By ${post.author}", calculateAgo(post.created),
+            var currPost = RedditPost(post.title, "By ${post.author}", calculateAgo(post.created),
                     "https://reddit.com${post.permalink}")
             feedList.add(currPost)
         }
-        return feedList
+        return subredditPaginator
     }
 
     // calculates the time difference between current date and created date. Returns the appropriate formatted string.
