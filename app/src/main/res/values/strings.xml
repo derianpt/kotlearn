@@ -1,15 +1,21 @@
 <resources>
     <string name="app_name">Kotlearn</string>
-    <string name="bottom_navigation_social">Social</string>
-    <string name="bottom_navigation_news">News</string>
+    <string name="bottom_navigation_reddit">Reddit</string>
+    <string name="bottom_navigation_twitter">Twitter</string>
     <string name="bottom_navigation_quiz">Quiz</string>
     <string name="bottom_navigation_about">About</string>
 
-    <!--Reddit Feed-->
-    <string name="social_feed_placeholder">Loading feed...</string>
-    <string name="social_feed_done">Loading finished!</string>
+    <!--Reddit-->
+    <string name="reddit_parent_header">Kotlin @ Reddit</string>
+    <string name="reddit_parent_body">Read the latest Kotlin posts on Reddit!</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <!--Twitter-->
+    <string name="twitter_parent_header">Kotlin @ Twitter</string>
+    <string name="twitter_parent_body">Read the latest Kotlin news on Twitter!</string>
+
+    <!--Common placeholders-->
+    <string name="loading_feed">Loading feed...</string>
+    <string name="loaded_feed">Loading finished!</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--QUIZ LANDING PAGE-->
