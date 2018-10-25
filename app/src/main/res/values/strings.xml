@@ -16,4 +16,10 @@
     <string name="introduction"> INTRODUCTION </string>
     <string name="basics"> BASICS </string>
     <string name="classesAndObjects"> CLASSES AND OBJECTS </string>
+    <string name="butIntro"> Test Yourself!</string>
+
+    <!--QUIZ PAGES-->
+    <string name="test"> Take the test </string>
+    <string name="tvIntroduction"> Introduction </string>
+    <string name="butNext"> Next </string>
 </resources>
