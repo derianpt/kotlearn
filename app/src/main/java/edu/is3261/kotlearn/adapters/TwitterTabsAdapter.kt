@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter
 import edu.is3261.kotlearn.fragments.TwitterFeed.HashtagTimelineFragment
 import edu.is3261.kotlearn.fragments.TwitterFeed.UserTimelineFragment
 
-class TwitterPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
+class TwitterTabsAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
     override fun getCount(): Int {
         return 2
     }

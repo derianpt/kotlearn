@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import edu.is3261.kotlearn.R
-import edu.is3261.kotlearn.adapters.TwitterPagerAdapter
+import edu.is3261.kotlearn.adapters.TwitterTabsAdapter
 
 class TwitterParentFragment : Fragment() {
 
@@ -18,7 +18,7 @@ class TwitterParentFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_twitter_parent, container, false)
 
         // create a new fragment adapter to handle child fragments
-        val fragmentAdapter = TwitterPagerAdapter(childFragmentManager)
+        val fragmentAdapter = TwitterTabsAdapter(childFragmentManager)
 
         // get the view pager used for swiping
         val viewPager = view.findViewById<ViewPager>(R.id.news_feed_viewpager)

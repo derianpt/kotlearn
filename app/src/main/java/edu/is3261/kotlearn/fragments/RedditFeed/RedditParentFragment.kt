@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import edu.is3261.kotlearn.R
-import edu.is3261.kotlearn.adapters.RedditPagerAdapter
+import edu.is3261.kotlearn.adapters.RedditTabsAdapter
 
 class RedditParentFragment : Fragment() {
 
@@ -17,7 +17,7 @@ class RedditParentFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_reddit_parent, container, false)
 
-        val fragmentAdapter = RedditPagerAdapter(childFragmentManager)
+        val fragmentAdapter = RedditTabsAdapter(childFragmentManager)
 
         val viewPager = view.findViewById<ViewPager>(R.id.social_parent_viewpager)
 

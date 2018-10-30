@@ -11,7 +11,7 @@ import android.content.Intent
 import android.net.Uri
 
 
-class MyAdapter(var myDataSet: ArrayList<RedditPost>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+class RedditFeedAdapter(var myDataSet: ArrayList<RedditPost>) : RecyclerView.Adapter<RedditFeedAdapter.MyViewHolder>() {
 
     // Provide a reference to the views for each data item
     class MyViewHolder(v: CardView) : RecyclerView.ViewHolder(v) {

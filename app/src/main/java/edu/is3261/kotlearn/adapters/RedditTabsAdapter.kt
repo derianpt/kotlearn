@@ -7,7 +7,7 @@ import edu.is3261.kotlearn.fragments.Quiz.QuizLandingFragment
 import edu.is3261.kotlearn.fragments.RedditFeed.AndroidSubredditFragment
 import edu.is3261.kotlearn.fragments.RedditFeed.KotlinSubredditFragment
 
-class RedditPagerAdapter (fm: FragmentManager) : FragmentPagerAdapter(fm){
+class RedditTabsAdapter (fm: FragmentManager) : FragmentPagerAdapter(fm){
     override fun getCount(): Int {
         return 2
     }
