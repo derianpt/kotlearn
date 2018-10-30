@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import edu.is3261.kotlearn.R
+import edu.is3261.kotlearn.adapters.OnBottomReachedListener
 import edu.is3261.kotlearn.adapters.RedditFeedAdapter
 import net.dean.jraw.RedditClient
 import net.dean.jraw.http.OkHttpNetworkAdapter
@@ -20,6 +21,7 @@ import net.dean.jraw.models.TimePeriod
 import net.dean.jraw.oauth.Credentials
 import net.dean.jraw.oauth.OAuthHelper
 import net.dean.jraw.pagination.DefaultPaginator
+import org.jetbrains.anko.doAsync
 import java.io.PrintWriter
 import java.io.StringWriter
 import java.util.*
@@ -30,7 +32,7 @@ class RedditFeed(var context: Context, var view: View, var subreddit: String) : 
 
     private lateinit var feedList: ArrayList<RedditPost>
     private lateinit var recyclerView: RecyclerView
-    private lateinit var viewAdapter: RecyclerView.Adapter<*>
+    private lateinit var viewAdapter: RedditFeedAdapter
     private lateinit var viewManager: RecyclerView.LayoutManager
 
     override fun doInBackground(vararg params: Void?): DefaultPaginator<Submission> {
@@ -43,6 +45,17 @@ class RedditFeed(var context: Context, var view: View, var subreddit: String) : 
 
         viewManager = LinearLayoutManager(context)
         viewAdapter = RedditFeedAdapter(feedList)
+        val onBottomReachedListener = object : OnBottomReachedListener {
+            override fun onBottomReached() {
+                doAsync {
+                    // pull the next page
+                    val nextPage = getNextPageAsArrayListOfPosts(result)
+                    viewAdapter.addPosts(nextPage)
+                }
+            }
+        }
+        viewAdapter.onBottomReachedListener = onBottomReachedListener
+
         if (subreddit.equals("kotlin")) {
             recyclerView = view.findViewById(R.id.kotlin_subreddit_recycler_view)
         } else {

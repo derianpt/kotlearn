@@ -27,7 +27,7 @@ class TwitterTabsAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapte
 
     override fun getPageTitle(position: Int): CharSequence? {
         return when(position){
-            0 -> "by @kotlin"
+            0 -> "@kotlin"
             1 -> "#kotlin"
             else -> "invalid news tab"
         }
