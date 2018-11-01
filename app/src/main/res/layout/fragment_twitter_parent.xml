@@ -8,18 +8,12 @@
     tools:context=".fragments.TwitterFeed.TwitterParentFragment">
 
     <TextView
-        android:id="@+id/news_feed_header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/twitter_parent_header"
-        android:textAppearance="@android:style/TextAppearance.Material.Medium" />
-
-    <TextView
         android:id="@+id/news_feed_body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="@string/twitter_parent_body"
-        android:textAppearance="@android:style/TextAppearance.Material.Small" />
+        android:textAppearance="@android:style/TextAppearance.Material.Medium" />
 
     <android.support.design.widget.TabLayout
         android:id="@+id/news_feed_tabs"

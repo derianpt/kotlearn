@@ -21,6 +21,7 @@ import net.dean.jraw.models.TimePeriod
 import net.dean.jraw.oauth.Credentials
 import net.dean.jraw.oauth.OAuthHelper
 import net.dean.jraw.pagination.DefaultPaginator
+import net.dean.jraw.pagination.Paginator
 import org.jetbrains.anko.doAsync
 import java.io.PrintWriter
 import java.io.StringWriter
@@ -28,7 +29,8 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class RedditFeed(var context: Context, var view: View, var subreddit: String) : AsyncTask<Void, Void, DefaultPaginator<Submission>>() {
+class RedditFeed(var context: Context, var view: View, var subreddit: String,
+                 var sortBy: String) : AsyncTask<Void, Void, DefaultPaginator<Submission>>() {
 
     private lateinit var feedList: ArrayList<RedditPost>
     private lateinit var recyclerView: RecyclerView
@@ -78,7 +80,7 @@ class RedditFeed(var context: Context, var view: View, var subreddit: String) : 
             view.findViewById<SwipeRefreshLayout>(R.id.android_subreddit_swipe_refresh).isRefreshing = false
         }
 
-        Toast.makeText(context, context.getString(R.string.loaded_feed), Toast.LENGTH_SHORT).show()
+//        Toast.makeText(context, context.getString(R.string.loaded_feed), Toast.LENGTH_SHORT).show()
     }
 
     // initialize reddit client by requesting for access token for userless app.
@@ -104,11 +106,20 @@ class RedditFeed(var context: Context, var view: View, var subreddit: String) : 
 
     // pull the relevant info from reddit API, returning a paginator
     fun pullSubredditInfo(redditClient: RedditClient): DefaultPaginator<Submission> {
+        var sort:SubredditSort
+        when (sortBy) {
+            "Best" -> sort = SubredditSort.BEST
+            "Hot" -> sort = SubredditSort.HOT
+            "New" -> sort = SubredditSort.NEW
+            "Rising" -> sort = SubredditSort.RISING
+            else -> {
+                sort = SubredditSort.BEST
+            }
+        }
+        Log.d("RedditFeed", sortBy+","+sort)
         val kotlinSubreddit = redditClient.subreddit(subreddit)
         val subredditPaginator = kotlinSubreddit.posts()
-                .limit(10)
-                .sorting(SubredditSort.TOP)
-                .timePeriod(TimePeriod.WEEK)
+                .sorting(sort)
                 .build()
         feedList = getNextPageAsArrayListOfPosts(subredditPaginator)
         return subredditPaginator
@@ -142,8 +153,11 @@ class RedditFeed(var context: Context, var view: View, var subreddit: String) : 
         val submissions: Listing<Submission> = subredditPaginator.next()
         val posts: ArrayList<RedditPost> = ArrayList()
         for (submission in submissions) {
-            var currPost = RedditPost(submission.title, "By ${submission.author}", calculateAgo(submission.created),
-                    "https://reddit.com${submission.permalink}")
+            var currPost = RedditPost(
+                        "${submission.title}",
+                        "By ${submission.author}",
+                        "${calculateAgo(submission.created)}",
+                        "https://reddit.com${submission.permalink}")
             posts.add(currPost)
         }
         return posts

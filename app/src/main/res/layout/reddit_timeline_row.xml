@@ -14,33 +14,30 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ImageView
-            android:visibility="gone"
-            android:id="@+id/post_thumbnail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            card_view:srcCompat="?attr/actionModeSplitBackground" />
-
         <TextView
             android:id="@+id/post_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:gravity="center_vertical|center_horizontal"
+            android:text="test"
+            android:textAppearance="@android:style/TextAppearance.Material.Menu" />
 
         <TextView
             android:id="@+id/post_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="test"
+            android:textAppearance="@android:style/TextAppearance.Material.Caption"
             tools:textAppearance="?android:attr/textAppearanceSmall" />
 
         <TextView
             android:id="@+id/post_author"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textAppearance="?android:attr/textAppearanceMedium"/>
+            android:gravity="center_vertical|center_horizontal"
+            android:text="test"
+            android:textAppearance="@android:style/TextAppearance.Material.Notification.Info" />
 
         <!--hidden-->
         <TextView
