@@ -41,7 +41,7 @@ class HashtagTimelineFragment : Fragment() {
     }
 
     private fun initHashtagTimeline(view: View) {
-        var isNight = TwitterParentFragment.IsItNightNow(this)
+        var isNight = TwitterParentFragment.isItNightNow(this)
 
         // Adapter for recycler view
         var viewAdapter: TweetTimelineRecyclerViewAdapter

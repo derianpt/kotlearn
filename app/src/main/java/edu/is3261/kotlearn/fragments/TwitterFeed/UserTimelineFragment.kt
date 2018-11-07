@@ -1,7 +1,6 @@
 package edu.is3261.kotlearn.fragments.TwitterFeed
 
 
-import android.content.res.Configuration
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
@@ -42,7 +41,7 @@ class UserTimelineFragment : Fragment() {
     }
 
     private fun initUserTimeline(view: View) {
-        var isNight = TwitterParentFragment.IsItNightNow(this)
+        var isNight = TwitterParentFragment.isItNightNow(this)
         // adapter for recycler view
         var viewAdapter: TweetTimelineRecyclerViewAdapter
         if (isNight) {

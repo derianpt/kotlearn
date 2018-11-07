@@ -40,7 +40,7 @@ class TwitterParentFragment : Fragment() {
     }
 
     companion object {
-        fun IsItNightNow(fragment:Fragment): Boolean{
+        fun isItNightNow(fragment:Fragment): Boolean{
             val currentNightMode = fragment.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
             when (currentNightMode) {
                 // Night mode is not active, we're in day time
