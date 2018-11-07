@@ -1,6 +1,7 @@
 package edu.is3261.kotlearn.fragments.TwitterFeed
 
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
@@ -17,7 +18,6 @@ import edu.is3261.kotlearn.R
 class UserTimelineFragment : Fragment() {
 
     private lateinit var userTimeline: UserTimeline
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -42,9 +42,19 @@ class UserTimelineFragment : Fragment() {
     }
 
     private fun initUserTimeline(view: View) {
-        var viewAdapter = TweetTimelineRecyclerViewAdapter.Builder(this.context)
-                .setTimeline(userTimeline)
-                .build()
+        var isNight = TwitterParentFragment.IsItNightNow(this)
+        // adapter for recycler view
+        var viewAdapter: TweetTimelineRecyclerViewAdapter
+        if (isNight) {
+            viewAdapter = TweetTimelineRecyclerViewAdapter.Builder(this.context)
+                    .setTimeline(userTimeline)
+                    .setViewStyle(R.style.tw__TweetDarkStyle)
+                    .build()
+        } else {
+            viewAdapter = TweetTimelineRecyclerViewAdapter.Builder(this.context)
+                    .setTimeline(userTimeline)
+                    .build()
+        }
         view.findViewById<RecyclerView>(R.id.user_timeline_recycler_view).apply {
             // use this setting to improve performance if you know that changes
             // in content do not change the layout size of the RecyclerView
@@ -58,5 +68,4 @@ class UserTimelineFragment : Fragment() {
         }
         view.findViewById<SwipeRefreshLayout>(R.id.user_timeline_swipe_refresh).isRefreshing = false
     }
-
 }

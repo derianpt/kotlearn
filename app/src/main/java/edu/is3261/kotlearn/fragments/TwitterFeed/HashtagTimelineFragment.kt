@@ -41,11 +41,20 @@ class HashtagTimelineFragment : Fragment() {
     }
 
     private fun initHashtagTimeline(view: View) {
+        var isNight = TwitterParentFragment.IsItNightNow(this)
+
         // Adapter for recycler view
-        var viewAdapter = TweetTimelineRecyclerViewAdapter.Builder(this.context)
-                .setTimeline(hashtagTimeline)
-                .setViewStyle(R.style.tw__TweetLightWithActionsStyle)
-                .build()
+        var viewAdapter: TweetTimelineRecyclerViewAdapter
+        if (isNight) {
+            viewAdapter = TweetTimelineRecyclerViewAdapter.Builder(this.context)
+                    .setTimeline(hashtagTimeline)
+                    .setViewStyle(R.style.tw__TweetDarkStyle)
+                    .build()
+        } else {
+            viewAdapter = TweetTimelineRecyclerViewAdapter.Builder(this.context)
+                    .setTimeline(hashtagTimeline)
+                    .build()
+        }
 
         // configure the recycler view contains our timeline.
         view.findViewById<RecyclerView>(R.id.hashtag_timeline_recycler_view).apply {
