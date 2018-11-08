@@ -43,11 +43,11 @@ class QuizBasicsQuestionFragment : Fragment() {
         val radioButton2 = view.findViewById<RadioButton>(R.id.radioBasicsButton2)
         val radioButton3 = view.findViewById<RadioButton>(R.id.radioBasicsButton3)
         val radioButton4 = view.findViewById<RadioButton>(R.id.radioBasicsButton4)
-        val radioGroup2 = view.findViewById<RadioGroup>(R.id.radioBasicsGroup1)
+        val radioGroup1 = view.findViewById<RadioGroup>(R.id.radioBasicsGroup1)
 
         val butNext = view.findViewById<Button>(R.id.but_basics_next)
-        butNext.setOnClickListener{
-            if (radioGroup2.getCheckedRadioButtonId() == -1)
+        butNext.setOnClickListener {
+            if (radioGroup1.getCheckedRadioButtonId() == -1)
             {
                 val toast = Toast.makeText(activity, "Please select one!", Toast.LENGTH_SHORT)
                 toast.setGravity(Gravity.CENTER, 0, 0)
@@ -55,27 +55,44 @@ class QuizBasicsQuestionFragment : Fragment() {
             }
             else
             {
-                val selected = view.findViewById<RadioButton>(radioGroup2.checkedRadioButtonId)
+                val selected = view.findViewById<RadioButton>(radioGroup1.checkedRadioButtonId)
                 if (currentQuestion.correctAnswer.equals(selected.text.toString())){
                     score++
 
                     //remove selection for next question
-                    radioGroup2.clearCheck()
+                    radioGroup1.clearCheck()
 
                     //if all questions not finished, keep going!
-                    if (qid < 4){
+                    if (qid < 5){
                         currentQuestion = questionList.get(qid)
-                        if (qid === 3){
+                        if (qid === 4) {
                             butNext.setText("Finish")
                             butNext.setOnClickListener {
-                                val toast = Toast.makeText(activity, "Congratulations! You have completed the level", Toast.LENGTH_SHORT)
-                                toast.setGravity(Gravity.CENTER, 0, 0)
-                                toast.show()
-                                fragmentManager!!.beginTransaction()
-                                        .setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_right, R.anim.slide_out_left)
+                                if (radioGroup1.getCheckedRadioButtonId() == -1){
+                                    val toast = Toast.makeText(activity, "Please select one!", Toast.LENGTH_SHORT)
+                                    toast.setGravity(Gravity.CENTER, 0, 0)
+                                    toast.show()
+
+
+                                } else {
+                                    val selected = view.findViewById<RadioButton>(radioGroup1.checkedRadioButtonId)
+                                    if (!(currentQuestion.correctAnswer.equals (selected.text.toString()))) {
+                                        val toast = Toast.makeText(activity, "Your answer is incorrect! Please try again!", Toast.LENGTH_SHORT)
+                                        toast.setGravity(Gravity.CENTER, 0, 0)
+                                        toast.show()
+                                    } else {
+                                        val toast = Toast.makeText(activity, "Congratulations! You have completed the level!", Toast.LENGTH_SHORT)
+                                        toast.setGravity(Gravity.CENTER, 0, 0)
+                                        toast.show()
+                                        fragmentManager!!.beginTransaction()
+                                                .setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_right, R.anim.slide_out_left)
                                         .replace(R.id.fragmentholder, QuizClassesAndObjectsFragment())
                                         .addToBackStack(null)
                                         .commit()
+
+                                    }
+
+                                }
 
                             }
                         }
