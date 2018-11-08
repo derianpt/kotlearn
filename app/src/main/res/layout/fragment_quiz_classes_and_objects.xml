@@ -60,28 +60,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
         android:layout_margin="50sp"
+        android:layout_weight="2"
+        android:gravity="center"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="30sp"
             android:layout_gravity="center"
             android:gravity="top|center"
             android:text="@string/title"
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="50sp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:gravity="center"
 
             android:text="@string/classesAndObjectsSummary"
-            android:textAppearance="?android:attr/textAppearanceSmall"/>
+            android:textAppearance="?android:attr/textAppearanceSmall" />
 
     </LinearLayout>
 
@@ -97,15 +96,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"
-            android:background="@drawable/button_background"
             android:layout_marginBottom="20dp"
-            android:textColor="#000000"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textAllCaps="false"
+            android:background="@drawable/button_background"
+            android:elevation="2dp"
             android:fontFamily="sans-serif-light"
             android:padding="2dp"
             android:text="@string/test"
-            android:elevation="2dp"/>
+            android:textAllCaps="false"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="?android:attr/textColorPrimary" />
 
     </LinearLayout>
 
