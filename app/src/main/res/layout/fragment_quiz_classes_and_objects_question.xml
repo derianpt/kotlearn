@@ -16,17 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
-            <!--THE BACK BUTTON-->
-            <ImageButton
-                android:id="@+id/classesAndObjectsBackButton"
-                android:layout_width="50sp"
-                android:layout_height="33sp"
-                android:layout_gravity="center"
-                android:scaleType="centerInside"
-                android:background="#00000000"
-                android:src="@drawable/back" />
-
+            
             <!--THE EGG-->
             <ImageView
                 android:id="@+id/image_classesAndObjects"
