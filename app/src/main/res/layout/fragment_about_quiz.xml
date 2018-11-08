@@ -20,7 +20,7 @@
     <pl.droidsonroids.gif.GifImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleType="centerInside"/>
-        <!--android:src="@drawable/reddit" />-->
+        android:scaleType="centerInside"
+        android:src="@drawable/quiz" />
 
 </LinearLayout>
