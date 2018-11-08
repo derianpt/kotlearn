@@ -57,7 +57,7 @@ class QuizDBHelper (context: Context) : SQLiteOpenHelper (context, DATABASE_NAME
 
         val IntroQ2 = QuestionRecord(
                 "Which of the following are WRONG about null safety? ",
-                "?? is a safe call operator",
+                "? is a safe call operator",
                 "If expression to the left of ?: is not null, the elvis operator returns it",
                 "!! operator converts any value to a null type",
                 "Kotlin’s type system is aimed to eliminate NullPointerException from code",
