@@ -18,17 +18,7 @@
             android:layout_margin="0dp"
             android:layout_marginStart="20dp"
             android:orientation="horizontal">
-
-            <!--THE BACK BUTTON-->
-            <ImageButton
-                android:id="@+id/introBackButton"
-                android:layout_width="50sp"
-                android:layout_height="33sp"
-                android:layout_gravity="center"
-                android:background="#00000000"
-                android:scaleType="centerInside"
-                android:src="@drawable/back" />
-
+            
             <!--THE EGG-->
             <ImageView
                 android:id="@+id/image_introduction"
