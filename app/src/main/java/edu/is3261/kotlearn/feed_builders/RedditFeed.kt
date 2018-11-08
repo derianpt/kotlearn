@@ -39,6 +39,10 @@ class RedditFeed(var context: Context, var view: View, var subreddit: String,
 
     override fun doInBackground(vararg params: Void?): DefaultPaginator<Submission> {
         val redditClient = initRedditClient()
+        // if reddit client could not be initialised (e.g. no internet connection), cancel async task
+        if (redditClient == null){
+            cancel(true)
+        }
         return pullSubredditInfo(redditClient!!)
     }
 
