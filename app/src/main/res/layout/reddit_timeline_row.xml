@@ -20,7 +20,8 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical|center_horizontal"
             android:text="test"
-            android:textAppearance="@android:style/TextAppearance.Material.Menu" />
+            android:textAppearance="@android:style/TextAppearance.Material.Menu"
+            android:textColor="?android:attr/textColorPrimary" />
 
         <TextView
             android:id="@+id/post_time"
@@ -29,6 +30,7 @@
             android:gravity="center_vertical|center_horizontal"
             android:text="test"
             android:textAppearance="@android:style/TextAppearance.Material.Caption"
+            android:textColor="?android:attr/textColorPrimary"
             tools:textAppearance="?android:attr/textAppearanceSmall" />
 
         <TextView
@@ -37,7 +39,8 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical|center_horizontal"
             android:text="test"
-            android:textAppearance="@android:style/TextAppearance.Material.Notification.Info" />
+            android:textAppearance="@android:style/TextAppearance.Material.Notification.Info"
+            android:textColor="?android:attr/textColorPrimary" />
 
         <!--hidden-->
         <TextView

@@ -8,6 +8,15 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:titleTextColor="@android:color/white" />
+
     <FrameLayout
         android:id="@+id/fragmentholder"
         android:layout_width="match_parent"
@@ -22,9 +31,6 @@
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="0dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
         android:layout_weight="1"
         android:background="?android:attr/windowBackground"
         app:menu="@menu/bottom_navigation" />

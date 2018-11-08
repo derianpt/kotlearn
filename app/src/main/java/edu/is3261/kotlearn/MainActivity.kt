@@ -1,12 +1,20 @@
 package edu.is3261.kotlearn
 
+import android.app.ProgressDialog.show
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.app.AppCompatDelegate
+import android.support.v7.app.AppCompatDelegate.*
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.CompoundButton
+import android.widget.Switch
+import android.widget.Toast
 import com.twitter.sdk.android.core.DefaultLogger
 import com.twitter.sdk.android.core.Twitter
 import com.twitter.sdk.android.core.TwitterAuthConfig
@@ -19,7 +27,7 @@ import edu.is3261.kotlearn.fragments.TwitterFeed.TwitterParentFragment
 class MainActivity : AppCompatActivity() {
 
     val manager = supportFragmentManager
-    private val mOnNavigationItemSelectorException = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+    private val mOnNavigationItemSelector = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.bottom_navigation_social -> {
                 createRedditFeedFragment()
@@ -39,25 +47,59 @@ class MainActivity : AppCompatActivity() {
         }
         false
     }
-    lateinit var toolbar: ActionBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.v("", "started")
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
+        super.onCreate(savedInstanceState)
         if (savedInstanceState == null) {
             createRedditFeedFragment()
         }
-        toolbar = supportActionBar!!
-        // changing color of ActionBar
-        toolbar.setBackgroundDrawable(ColorDrawable(Color.parseColor("#003366")))
-        toolbar.setIcon(R.drawable.basics)
-        val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_navigation)
+        setContentView(R.layout.activity_main)
 
-        bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectorException)
+        // init action bar
+        setSupportActionBar(findViewById(R.id.action_bar))
+
+        // init bottom nav
+        val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_navigation)
+        bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelector)
+
         // initialise twitter client
         initTwitter()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.action_bar, menu)
+        if (menu == null) {
+            Log.d("main", "menu is null anyway")
+        }
+
+        var menuItem = menu?.findItem(R.id.day_night_switch)
+        menuItem?.setActionView(R.layout.day_night_switch)
+
+        var dayNightSwitch: Switch? = menuItem?.actionView?.findViewById(R.id.d_n_switch)
+        if (dayNightSwitch == null) {
+            Log.d("main", "day night switch is null")
+        }
+
+        // if currently at night, toggle should be on.
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
+            dayNightSwitch?.isChecked = true
+        }
+
+        // add listener to toggle night mode
+        dayNightSwitch?.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                Log.d("main", "night")
+                AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES)
+                recreate()
+            } else {
+                Log.d("main", "day")
+                AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
+                recreate()
+            }
+        }
+
+        return true
     }
 
     fun createRedditFeedFragment() {

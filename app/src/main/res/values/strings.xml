@@ -4,6 +4,7 @@
     <string name="bottom_navigation_twitter">Twitter</string>
     <string name="bottom_navigation_quiz">Quiz</string>
     <string name="bottom_navigation_about">About</string>
+    <string name="day_night_switch">Night Mode  </string>
 
     <!--Reddit-->
     <string name="reddit_parent_body">Read Kotlin related posts on Reddit!</string>
