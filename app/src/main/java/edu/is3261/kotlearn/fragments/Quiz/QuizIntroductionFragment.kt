@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import edu.is3261.kotlearn.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -31,12 +32,17 @@ class QuizIntroductionFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val testYourselfButton = activity?.findViewById<Button>(R.id.butTestYourself)
+        val testYourselfButton = activity?.findViewById<Button>(R.id.butIntroTestYourself)
         testYourselfButton?.setOnClickListener {
             fragmentManager!!.beginTransaction()
+                    .setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_right, R.anim.slide_out_left)
                     .replace(R.id.fragmentholder, QuizIntroductionQuestionFragment())
                     .addToBackStack(null)
                     .commit()
+        }
+        val backButton = activity?.findViewById<ImageButton>(R.id.introBackButton)
+        backButton?.setOnClickListener{
+            fragmentManager!!.popBackStack()
         }
     }
 

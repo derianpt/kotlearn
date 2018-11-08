@@ -9,9 +9,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+
 import edu.is3261.kotlearn.R
 import edu.is3261.kotlearn.fragments.Quiz.helpers.QuizDBHelper
-
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,8 +22,7 @@ private const val ARG_PARAM2 = "param2"
  * A simple [Fragment] subclass.
  *
  */
-
-class QuizIntroductionQuestionFragment : Fragment() {
+class QuizClassesAndObjectsQuestionFragment : Fragment() {
 
     var qid = 0
     var score = 0
@@ -34,22 +33,19 @@ class QuizIntroductionQuestionFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        val view = inflater.inflate(R.layout.fragment_quiz_introduction_question, container, false)
+        val view = inflater.inflate(R.layout.fragment_quiz_classes_and_objects_question, container, false)
 
         if (savedInstanceState != null) {
             qid = savedInstanceState.getInt("qid")
             score = savedInstanceState.getInt("score")
         }
-        val questionText = view.findViewById<TextView>(R.id.tv_intro_question)
-        val radioButton1 = view.findViewById<RadioButton>(R.id.radioIntroButton1)
-        val radioButton2 = view.findViewById<RadioButton>(R.id.radioIntroButton2)
-        val radioButton3 = view.findViewById<RadioButton>(R.id.radioIntroButton3)
-        val radioButton4 = view.findViewById<RadioButton>(R.id.radioIntroButton4)
-        val radioGroup1 = view.findViewById<RadioGroup>(R.id.radioIntroGroup1)
-        val backButton = activity?.findViewById<ImageButton>(R.id.introBackButton)
-        backButton?.setOnClickListener {
-            fragmentManager!!.popBackStack()
-        }
+        val questionText = view.findViewById<TextView>(R.id.tv_classes_and_objects_question)
+        val radioButton1 = view.findViewById<RadioButton>(R.id.radioClassesAndObjectsButton1)
+        val radioButton2 = view.findViewById<RadioButton>(R.id.radioClassesAndObjectsButton2)
+        val radioButton3 = view.findViewById<RadioButton>(R.id.radioClassesAndObjectsButton3)
+        val radioButton4 = view.findViewById<RadioButton>(R.id.radioClassesAndObjectsButton4)
+        val radioGroup1 = view.findViewById<RadioGroup>(R.id.radioClassesAndObjectsGroup1)
+
         val butNext = view.findViewById<Button>(R.id.but_intro_next)
         butNext.setOnClickListener {
             if (radioGroup1.getCheckedRadioButtonId() == -1)
@@ -83,6 +79,7 @@ class QuizIntroductionQuestionFragment : Fragment() {
 
                     //so that there will be no negative score. very demoralizing.
                     if (score > 0) {
+                        //minus so that when click correct answer will have counted in wrong answer.
                         score--
                     }
                 }
@@ -99,12 +96,14 @@ class QuizIntroductionQuestionFragment : Fragment() {
 
         var db = QuizDBHelper (context)
         db.initializeQuestions()
-        questionList = db.readQuestionsByQuestionCategory("Introduction")
+        questionList = db.readQuestionsByQuestionCategory("Classes")
         currentQuestion = questionList.get(qid)
 
     }
 
-    private fun setQuestionView(questionText:TextView, radioButton1:Button, radioButton2:Button, radioButton3: Button, radioButton4: Button){
+
+
+    private fun setQuestionView(questionText: TextView, radioButton1: Button, radioButton2: Button, radioButton3: Button, radioButton4: Button){
         questionText.setText(currentQuestion.question)
         radioButton1.setText(currentQuestion.optionA)
         radioButton2.setText(currentQuestion.optionB)
@@ -118,4 +117,6 @@ class QuizIntroductionQuestionFragment : Fragment() {
         outState.putInt("qid", qid)
         outState.putInt("score", score)
     }
+
+
 }

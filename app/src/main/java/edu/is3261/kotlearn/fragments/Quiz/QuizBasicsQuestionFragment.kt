@@ -1,6 +1,5 @@
 package edu.is3261.kotlearn.fragments.Quiz
 
-
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -23,36 +22,32 @@ private const val ARG_PARAM2 = "param2"
  *
  */
 
-class QuizIntroductionQuestionFragment : Fragment() {
+class QuizBasicsQuestionFragment : Fragment() {
 
     var qid = 0
     var score = 0
     lateinit var currentQuestion : QuestionRecord
     lateinit var questionList : List<QuestionRecord>
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+        val view = inflater.inflate(R.layout.fragment_quiz_basics_question, container, false)
 
-        val view = inflater.inflate(R.layout.fragment_quiz_introduction_question, container, false)
-
-        if (savedInstanceState != null) {
+        if (savedInstanceState != null){
             qid = savedInstanceState.getInt("qid")
             score = savedInstanceState.getInt("score")
         }
-        val questionText = view.findViewById<TextView>(R.id.tv_intro_question)
-        val radioButton1 = view.findViewById<RadioButton>(R.id.radioIntroButton1)
-        val radioButton2 = view.findViewById<RadioButton>(R.id.radioIntroButton2)
-        val radioButton3 = view.findViewById<RadioButton>(R.id.radioIntroButton3)
-        val radioButton4 = view.findViewById<RadioButton>(R.id.radioIntroButton4)
-        val radioGroup1 = view.findViewById<RadioGroup>(R.id.radioIntroGroup1)
-        val backButton = activity?.findViewById<ImageButton>(R.id.introBackButton)
-        backButton?.setOnClickListener {
-            fragmentManager!!.popBackStack()
-        }
-        val butNext = view.findViewById<Button>(R.id.but_intro_next)
-        butNext.setOnClickListener {
-            if (radioGroup1.getCheckedRadioButtonId() == -1)
+
+        val questionText = view.findViewById<TextView>(R.id.tv_basics_question)
+        val radioButton1 = view.findViewById<RadioButton>(R.id.radioBasicsButton1)
+        val radioButton2 = view.findViewById<RadioButton>(R.id.radioBasicsButton2)
+        val radioButton3 = view.findViewById<RadioButton>(R.id.radioBasicsButton3)
+        val radioButton4 = view.findViewById<RadioButton>(R.id.radioBasicsButton4)
+        val radioGroup2 = view.findViewById<RadioGroup>(R.id.radioBasicsGroup1)
+
+        val butNext = view.findViewById<Button>(R.id.but_basics_next)
+        butNext.setOnClickListener{
+            if (radioGroup2.getCheckedRadioButtonId() == -1)
             {
                 val toast = Toast.makeText(activity, "Please select one!", Toast.LENGTH_SHORT)
                 toast.setGravity(Gravity.CENTER, 0, 0)
@@ -60,12 +55,12 @@ class QuizIntroductionQuestionFragment : Fragment() {
             }
             else
             {
-                val selected = view.findViewById<RadioButton>(radioGroup1.checkedRadioButtonId)
+                val selected = view.findViewById<RadioButton>(radioGroup2.checkedRadioButtonId)
                 if (currentQuestion.correctAnswer.equals(selected.text.toString())){
                     score++
 
                     //remove selection for next question
-                    radioGroup1.clearCheck()
+                    radioGroup2.clearCheck()
 
                     //if all questions not finished, keep going!
                     if (qid < 4){
@@ -83,6 +78,7 @@ class QuizIntroductionQuestionFragment : Fragment() {
 
                     //so that there will be no negative score. very demoralizing.
                     if (score > 0) {
+                        //minus so that when click correct answer will have counted in wrong answer.
                         score--
                     }
                 }
@@ -93,13 +89,12 @@ class QuizIntroductionQuestionFragment : Fragment() {
 
         return view
     }
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
         var db = QuizDBHelper (context)
         db.initializeQuestions()
-        questionList = db.readQuestionsByQuestionCategory("Introduction")
+        questionList = db.readQuestionsByQuestionCategory("Basics")
         currentQuestion = questionList.get(qid)
 
     }

@@ -45,8 +45,6 @@ class QuizDBHelper (context: Context) : SQLiteOpenHelper (context, DATABASE_NAME
     }
 
     fun initializeQuestions(){
-
-        Log.d("initalizinggg", "****initializeQuestions")
         val IntroQ1 = QuestionRecord(
                 "How do you define a function with an Int return type?",
                 "fun sum (a: Int, b: Int): Int",
@@ -57,14 +55,13 @@ class QuizDBHelper (context: Context) : SQLiteOpenHelper (context, DATABASE_NAME
                 "Introduction")
         this.addQuestion (IntroQ1)
 
-        Log.d ("added", "question 1")
         val IntroQ2 = QuestionRecord(
-                "Which of the following are mutable?",
-                "var",
-                "val",
-                "",
-                "",
-                "var",
+                "Which of the following are WRONG about null safety? ",
+                "?? is a safe call operator",
+                "If expression to the left of ?: is not null, the elvis operator returns it",
+                "!! operator converts any value to a null type",
+                "Kotlin’s type system is aimed to eliminate NullPointerException from code",
+                "!! operator converts any value to a null type",
                 "Introduction")
         this.addQuestion (IntroQ2)
 
@@ -134,6 +131,83 @@ class QuizDBHelper (context: Context) : SQLiteOpenHelper (context, DATABASE_NAME
                 "Basics"
         )
         this.addQuestion(BasicsQ3)
+
+        val BasicsQ4 = QuestionRecord(
+                "Kotlin has three structural jump expressions, which one is not one of them?",
+                "return",
+                "break",
+                "continue",
+                "jump",
+                "jump",
+                "Basics"
+        )
+        this.addQuestion(BasicsQ4)
+
+        val BasicsQ5 = QuestionRecord(
+                "Select the correct syntax for an anonymous function.",
+                "fun <T, R> Collection<T>.fold( … )",
+                "fun(x: Int, y: Int) : Int { … }",
+                "fun compare (a: String, b: String): Boolean = a.length < b.length",
+                "fun html (init: HTML.() → Unit ) : HTML { … }",
+                "fun(x: Int, y: Int) : Int { … }",
+                "Basics"
+        )
+        this.addQuestion(BasicsQ5)
+
+        val ClassesQ1 = QuestionRecord(
+                "Which is true for the following statement: class Person (val name: String)",
+                "It has a private property 'name'",
+                "It can be extended by other classes",
+                "It is public",
+                "It is package-private",
+                "It is public",
+                "Classes"
+        )
+        this.addQuestion(ClassesQ1)
+
+        val ClassesQ2 = QuestionRecord(
+                "What is to in 'val test = 33 to 42'?",
+                "A syntax error",
+                "A kotlin keyword to create a Pair(33, 42)",
+                "An infix extension function creating a Pair (33, 42)",
+                "A Kotlin keyword to create a Range from 33 to 42",
+                "An infix extension function creating a Pair (33, 42)",
+                "Classes"
+        )
+        this.addQuestion(ClassesQ2)
+
+        val ClassesQ3 = QuestionRecord(
+                "How many visibility modifiers are there in Kotlin?",
+                "1",
+                "4",
+                "2",
+                "5",
+                "4",
+                "Classes"
+        )
+        this.addQuestion(ClassesQ3)
+
+        val ClassesQ4 = QuestionRecord(
+                "Which of the following is true about primary constructors?",
+                "You can have more than one primary constructor",
+                "The constructor keyword can never be omitted",
+                "The primary constructor cannot contain any code",
+                "Primary constructor is not part of the class header",
+                "The primary constructor cannot contain any code",
+                "Classes"
+        )
+        this.addQuestion(ClassesQ4)
+
+        val ClassesQ5 = QuestionRecord(
+                "What does a data class not offer?",
+                "A generated copy(...) method, to create copies of instances",
+                "An auto-generated toString() method",
+                "Automatic conversion from/to JSON",
+                "Auto-generated hashCode() and equals() method",
+                "Automatic conversion from/to JSON",
+                "Classes"
+        )
+        this.addQuestion(ClassesQ5)
     }
 
 
@@ -152,15 +226,16 @@ class QuizDBHelper (context: Context) : SQLiteOpenHelper (context, DATABASE_NAME
         return true
     }
 
-    fun readQuestionsByQuestionCategory(questionCat: String): ArrayList<QuestionRecord>{
-        Log.d ("readingg", "readQuestionsByQuestionCategory")
+    fun readQuestionsByQuestionCategory(questionCatInput: String): ArrayList<QuestionRecord>{
         val questions = ArrayList<QuestionRecord>()
         val db= writableDatabase
         var cursor: Cursor? = null
         try{
-            cursor = db.rawQuery ("select * from " +
+            Log.d("in the try", "i am in try")
+            cursor = db.rawQuery ("SELECT * FROM " +
                     QuestionTableInfo.TABLE_NAME, null)
         } catch (e: SQLiteException){
+            Log.d("in catch", "i am in catch")
             db.execSQL (SQL_CREATE_ENTRIES)
             return ArrayList()
         }
@@ -191,10 +266,9 @@ class QuizDBHelper (context: Context) : SQLiteOpenHelper (context, DATABASE_NAME
                 questionCat = cursor.getString(
                         cursor.getColumnIndex(QuestionTableInfo.COLUMN_QUESTIONCAT))
 
-
-                if (questionCat.equals("Introduction")) {
+                if (questionCat.equals(questionCatInput))
                     questions.add(QuestionRecord(question, optionA, optionB, optionC, optionD, correctAnswer, questionCat))
-                }
+
                 cursor.moveToNext()
             }
         }

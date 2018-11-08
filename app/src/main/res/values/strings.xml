@@ -22,10 +22,15 @@
     <string name="introduction"> INTRODUCTION </string>
     <string name="basics"> BASICS </string>
     <string name="classesAndObjects"> CLASSES AND OBJECTS </string>
-    <string name="butIntro"> Test Yourself!</string>
 
     <!--QUIZ PAGES-->
     <string name="test"> Take the test </string>
     <string name="tvIntroduction"> Introduction </string>
+    <string name="tvBasics"> Basics </string>
+    <string name="tvClassesAndObjects"> Classes and Objects </string>
     <string name="butNext"> Next </string>
+    <string name="introSummary"> In this section, you will be tested on simple concepts in Kotlin such as coding conventions and basic syntax to get you started with Kotlin! </string>
+    <string name="basicsSummary"> This section will focus on more intermediate Kotlin concepts such as basic types, packages and imports, control flows, null safety operators and returns and jumps. </string>
+    <string name="classesAndObjectsSummary"> This section will test more advanced concepts related to classes and objects. Some of the concepts that will be addressed are classes, extention functions and visibility modifiers. </string>
+    <string name="title"> Section Summary </string>
 </resources>
