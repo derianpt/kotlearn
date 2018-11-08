@@ -68,20 +68,35 @@ class QuizIntroductionQuestionFragment : Fragment() {
                     radioGroup1.clearCheck()
 
                     //if all questions not finished, keep going!
-                    if (qid < 4){
+                    if (qid < 5){
                         currentQuestion = questionList.get(qid)
-                        if (qid === 3){
+                        if (qid === 4) {
                             butNext.setText("Finish")
                             butNext.setOnClickListener {
-                                val toast = Toast.makeText(activity, "Congratulations! You have completed the level", Toast.LENGTH_SHORT)
-                                toast.setGravity(Gravity.CENTER, 0, 0)
-                                toast.show()
-                                fragmentManager!!.beginTransaction()
-                                        .setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_right, R.anim.slide_out_left)
-                                        .replace(R.id.fragmentholder, QuizBasicsFragment())
-                                        .addToBackStack(null)
-                                        .commit()
+                                if (radioGroup1.getCheckedRadioButtonId() == -1) {
+                                    val toast = Toast.makeText(activity, "Please select one!", Toast.LENGTH_SHORT)
+                                    toast.setGravity(Gravity.CENTER, 0, 0)
+                                    toast.show()
 
+
+                                } else {
+                                    val selected = view.findViewById<RadioButton>(radioGroup1.checkedRadioButtonId)
+                                    if (!(currentQuestion.correctAnswer.equals(selected.text.toString()))) {
+                                        val toast = Toast.makeText(activity, "Your answer is incorrect! Please try again!", Toast.LENGTH_SHORT)
+                                        toast.setGravity(Gravity.CENTER, 0, 0)
+                                        toast.show()
+                                    } else {
+                                        val toast = Toast.makeText(activity, "Congratulations! You have completed the level!", Toast.LENGTH_SHORT)
+                                        toast.setGravity(Gravity.CENTER, 0, 0)
+                                        toast.show()
+                                        fragmentManager!!.beginTransaction()
+                                                .setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_right, R.anim.slide_out_left)
+                                                .replace(R.id.fragmentholder, QuizBasicsFragment())
+                                                .addToBackStack(null)
+                                                .commit()
+
+                                    }
+                                }
                             }
                         }
                         setQuestionView(questionText, radioButton1, radioButton2, radioButton3, radioButton4)
