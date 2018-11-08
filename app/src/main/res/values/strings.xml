@@ -4,14 +4,21 @@
     <string name="bottom_navigation_twitter">Twitter</string>
     <string name="bottom_navigation_quiz">Quiz</string>
     <string name="bottom_navigation_about">About</string>
+    <string name="day_night_switch">Enable Night Mode\u00A0\u00A0</string>
 
     <!--Reddit-->
-    <string name="reddit_parent_header">Kotlin @ Reddit</string>
-    <string name="reddit_parent_body">Read the latest Kotlin posts on Reddit!</string>
+    <string name="reddit_parent_body">Read Kotlin related posts on Reddit!</string>
+    <string name="reddit_parent_sortby">Sort by :</string>
 
     <!--Twitter-->
-    <string name="twitter_parent_header">Kotlin @ Twitter</string>
-    <string name="twitter_parent_body">Read the latest Kotlin news on Twitter!</string>
+    <string name="twitter_parent_body">Read Kotlin news on Twitter!</string>
+
+    <!--About-->
+    <string name="about_hello">Welcome To Kotlearn!</string>
+    <string name="about_twitter">Read @kotlin and #kotlin on Twitter!</string>
+    <string name="about_reddit">Read r/Kotlin and r/Android on Reddit!</string>
+    <string name="about_quiz">Test your knowledge with our built-in quiz!</string>
+    <string name="about_last">Ready? Let\'s get started!</string>
 
     <!--Common placeholders-->
     <string name="loading_feed">Loading feed...</string>

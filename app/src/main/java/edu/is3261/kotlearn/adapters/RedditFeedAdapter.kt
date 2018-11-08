@@ -9,9 +9,15 @@ import edu.is3261.kotlearn.R
 import edu.is3261.kotlearn.feed_builders.RedditPost
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
+import android.view.View
+import android.widget.ImageView
+import com.squareup.picasso.Picasso
 
 
-class MyAdapter(var myDataSet: ArrayList<RedditPost>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+class RedditFeedAdapter(var feedList: ArrayList<RedditPost>) : RecyclerView.Adapter<RedditFeedAdapter.MyViewHolder>() {
+
+    lateinit var onBottomReachedListener: OnBottomReachedListener
 
     // Provide a reference to the views for each data item
     class MyViewHolder(v: CardView) : RecyclerView.ViewHolder(v) {
@@ -36,9 +42,15 @@ class MyAdapter(var myDataSet: ArrayList<RedditPost>) : RecyclerView.Adapter<MyA
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+
+        // if reaching the last position, trigger onBottomReached method
+        if (position == feedList.size - 9) {
+            onBottomReachedListener.onBottomReached()
+        }
+
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        var postDataToUse = myDataSet[position]
+        var postDataToUse = feedList[position]
         holder.postTitle.text = postDataToUse.title
         holder.postAuthor.text = postDataToUse.author
         holder.postTime.text = postDataToUse.time
@@ -46,5 +58,12 @@ class MyAdapter(var myDataSet: ArrayList<RedditPost>) : RecyclerView.Adapter<MyA
     }
 
     // Return the size of your dataset (invoked by the layout manager)
-    override fun getItemCount(): Int = myDataSet.size
+    override fun getItemCount(): Int = feedList.size
+
+    // appends new posts to current feed.
+    fun addPosts(posts:ArrayList<RedditPost>){
+        var oldCount = itemCount
+        feedList.addAll(posts)
+        notifyItemRangeInserted(oldCount,feedList.size)
+    }
 }

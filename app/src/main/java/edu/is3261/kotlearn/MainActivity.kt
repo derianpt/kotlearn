@@ -1,14 +1,19 @@
 package edu.is3261.kotlearn
 
+import android.content.Context
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.app.AppCompatDelegate
+import android.support.v7.app.AppCompatDelegate.*
 import android.util.Log
+import android.view.Menu
+import android.widget.Switch
 import com.twitter.sdk.android.core.DefaultLogger
 import com.twitter.sdk.android.core.Twitter
 import com.twitter.sdk.android.core.TwitterAuthConfig
 import com.twitter.sdk.android.core.TwitterConfig
+import edu.is3261.kotlearn.fragments.About.AboutParentFragment
 import edu.is3261.kotlearn.fragments.Quiz.QuizLandingFragment
 import edu.is3261.kotlearn.fragments.RedditFeed.RedditParentFragment
 import edu.is3261.kotlearn.fragments.TwitterFeed.TwitterParentFragment
@@ -17,44 +22,49 @@ import edu.is3261.kotlearn.fragments.TwitterFeed.TwitterParentFragment
 class MainActivity : AppCompatActivity() {
 
     val manager = supportFragmentManager
-    private val mOnNavigationItemSelectorException = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+    private val mOnNavigationItemSelector = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
-            R.id.bottom_navigation_social -> {
-                createRedditFeedFragment()
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.bottom_navigation_news -> {
+            R.id.bottom_navigation_twitter -> {
                 createTwitterFeedFragment()
                 return@OnNavigationItemSelectedListener true
             }
+
+            R.id.bottom_navigation_reddit -> {
+                createRedditFeedFragment()
+                return@OnNavigationItemSelectedListener true
+            }
+
             R.id.bottom_navigation_quiz -> {
                 createQuizLandingFragment()
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.bottom_navigation_about -> {
 
+            R.id.bottom_navigation_about -> {
+                createAboutFragment()
+                return@OnNavigationItemSelectedListener true
             }
         }
         false
     }
-    lateinit var toolbar: ActionBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.v("", "started")
         super.onCreate(savedInstanceState)
+        if (savedInstanceState == null) {
+            createTwitterFeedFragment()
+        }
         setContentView(R.layout.activity_main)
 
-        if (savedInstanceState == null) {
-            createRedditFeedFragment()
+        // get night mode setting from sharedprefs & turn it on if needed
+        val sharedPref = this.getPreferences(Context.MODE_PRIVATE)
+        val isNightMode = sharedPref.getBoolean("isNightMode", false)
+        if (isNightMode){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }
-        toolbar = supportActionBar!!
-        toolbar.hide()
-        // changing color of ActionBar
-//        toolbar.setBackgroundDrawable(ColorDrawable(Color.parseColor("#003366")))
-//        toolbar.setIcon(R.drawable.basics)
-        val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_navigation)
 
-        bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectorException)
+        // init bottom nav
+        val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_navigation)
+        bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelector)
+
         // initialise twitter client
         initTwitter()
     }
@@ -78,6 +88,14 @@ class MainActivity : AppCompatActivity() {
     fun createQuizLandingFragment() {
         val transaction = manager.beginTransaction()
         val fragment = QuizLandingFragment()
+        transaction.replace(R.id.fragmentholder, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
+
+    fun createAboutFragment() {
+        val transaction = manager.beginTransaction()
+        val fragment = AboutParentFragment()
         transaction.replace(R.id.fragmentholder, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
