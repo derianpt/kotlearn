@@ -23,6 +23,7 @@ import net.dean.jraw.oauth.OAuthHelper
 import net.dean.jraw.pagination.DefaultPaginator
 import net.dean.jraw.pagination.Paginator
 import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.toast
 import java.io.PrintWriter
 import java.io.StringWriter
 import java.util.*
@@ -42,6 +43,7 @@ class RedditFeed(var context: Context, var view: View, var subreddit: String,
         // if reddit client could not be initialised (e.g. no internet connection), cancel async task
         if (redditClient == null){
             cancel(true)
+            Toast.makeText(context,"You need internet connection to download the feed!", Toast.LENGTH_SHORT).show()
         }
         return pullSubredditInfo(redditClient!!)
     }

@@ -9,15 +9,12 @@
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.25"
+        android:layout_height="wrap_content"
         android:elevation="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:layout_marginStart="20dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <!--THE BACK BUTTON-->
@@ -35,10 +32,10 @@
                 android:id="@+id/image_classesAndObjects"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_gravity="center"
-                android:maxHeight="80dp"
+                android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:maxHeight="80dp"
                 android:src="@drawable/classesandobjects" />
 
             <!-- INTRODUCTION -->
@@ -47,10 +44,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
                 android:layout_weight="4"
-                android:text="@string/classesAndObjects"
                 android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:text="@string/classesAndObjects"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
         </LinearLayout>
@@ -58,12 +55,11 @@
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:scaleX="0.8"
         android:scaleY="0.8"
-        android:gravity="center"
-        android:layout_gravity="center"
         card_view:cardCornerRadius="10dp">
 
         <LinearLayout
@@ -75,21 +71,18 @@
             <TextView
                 android:id="@+id/tv_classes_and_objects_question"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="3"
-                android:gravity="center"
+                android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-light"
-                android:textSize="25sp"
-                android:textAppearance="?android:attr/textAppearanceLarge"/>
+                android:gravity="center"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="25sp" />
 
             <!--grouping ensures only one can be selected.-->
             <!--can only have radio buttons as children-->
             <RadioGroup
                 android:id="@+id/radioClassesAndObjectsGroup1"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="8"
-                android:padding="2dp"
+                android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-light"
                 android:gravity="center">
 
@@ -98,83 +91,58 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:background="@drawable/radiobutton_background"
                     android:text="RadioButton"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:paddingStart="20dp"
-                    android:paddingTop="15dp"
-                    android:paddingLeft="10dp"
-                    android:background="@drawable/radiobutton_background" />
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <RadioButton
                     android:id="@+id/radioClassesAndObjectsButton2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:paddingStart="20dp"
-                    android:paddingTop="15dp"
-                    android:paddingLeft="10dp"
-                    android:background="@drawable/radiobutton_background"/>
+                    android:background="@drawable/radiobutton_background"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <RadioButton
                     android:id="@+id/radioClassesAndObjectsButton3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:paddingStart="20dp"
-                    android:paddingTop="15dp"
-                    android:paddingLeft="10dp"
-                    android:background="@drawable/radiobutton_background"/>
+                    android:background="@drawable/radiobutton_background"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <RadioButton
                     android:id="@+id/radioClassesAndObjectsButton4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingStart="20dp"
-                    android:paddingTop="15dp"
                     android:background="@drawable/radiobutton_background"
-                    android:paddingLeft="10dp"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    />
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
             </RadioGroup>
             <!--<Button-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="1"-->
-                <!--android:scaleX="0.7"-->
-                <!--android:scaleY="0.7"-->
-                <!--android:padding="@dimen/text_margin"-->
-                <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
-                <!--android:text="@string/butNext"/>-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:scaleX="0.7"-->
+            <!--android:scaleY="0.7"-->
+            <!--android:padding="@dimen/text_margin"-->
+            <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
+            <!--android:text="@string/butNext"/>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/but_classes_and_objects_next"
+                android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="0.4"
-                android:gravity="center|bottom"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/but_classes_and_objects_next"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:layout_gravity="bottom|center"
-                    android:background="@drawable/button_background"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:textColor="#000000"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textAllCaps="false"
-                    android:fontFamily="sans-serif-light"
-                    android:padding="2dp"
-                    android:text="@string/butNext"
-                    android:elevation="20dp"/>
-
-            </LinearLayout>
+                android:layout_gravity="bottom|center"
+                android:layout_weight="1"
+                android:background="@drawable/button_background"
+                android:elevation="20dp"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/butNext"
+                android:textAllCaps="false"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="?android:attr/textColorPrimary" />
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
