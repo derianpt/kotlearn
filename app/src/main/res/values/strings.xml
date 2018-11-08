@@ -4,7 +4,7 @@
     <string name="bottom_navigation_twitter">Twitter</string>
     <string name="bottom_navigation_quiz">Quiz</string>
     <string name="bottom_navigation_about">About</string>
-    <string name="day_night_switch">Night Mode  </string>
+    <string name="day_night_switch">Enable Night Mode\u00A0\u00A0</string>
 
     <!--Reddit-->
     <string name="reddit_parent_body">Read Kotlin related posts on Reddit!</string>
@@ -13,6 +13,8 @@
     <!--Twitter-->
     <string name="twitter_parent_body">Read Kotlin news on Twitter!</string>
 
+    <!--About-->
+    <string name="about_hello">Welcome To Kotlearn!</string>
     <!--Common placeholders-->
     <string name="loading_feed">Loading feed...</string>
     <string name="loaded_feed">Loading finished!</string>
