@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sort_by_array">
+        <item>Best</item>
+        <item>Hot</item>
+        <item>New</item>
+        <item>Rising</item>
+    </string-array>
+</resources>
