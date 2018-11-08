@@ -90,7 +90,7 @@ class QuizDBHelper (context: Context) : SQLiteOpenHelper (context, DATABASE_NAME
         val IntroQ5 = QuestionRecord(
                 "Select what you should NOT do for Kotlin coding conventions.",
                 "Name functions, properties and local variables starting with lower case letters and use camel humps and no underscores",
-                "Put nested classes next ot code that uses those classes",
+                "Put nested classes next to code that uses those classes",
                 "Explicitly specify function return types and property types",
                 "Sort method declarations alphabetically or by visibility",
                 "Sort method declarations alphabetically or by visibility",
