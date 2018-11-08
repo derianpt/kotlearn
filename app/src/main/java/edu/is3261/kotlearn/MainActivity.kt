@@ -1,20 +1,13 @@
 package edu.is3261.kotlearn
 
-import android.app.ProgressDialog.show
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.app.AppCompatDelegate
 import android.support.v7.app.AppCompatDelegate.*
 import android.util.Log
 import android.view.Menu
-import android.view.MenuItem
-import android.widget.CompoundButton
 import android.widget.Switch
-import android.widget.Toast
 import com.twitter.sdk.android.core.DefaultLogger
 import com.twitter.sdk.android.core.Twitter
 import com.twitter.sdk.android.core.TwitterAuthConfig
@@ -29,11 +22,11 @@ class MainActivity : AppCompatActivity() {
     val manager = supportFragmentManager
     private val mOnNavigationItemSelector = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
-            R.id.bottom_navigation_social -> {
+            R.id.bottom_navigation_reddit -> {
                 createRedditFeedFragment()
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.bottom_navigation_news -> {
+            R.id.bottom_navigation_twitter -> {
                 createTwitterFeedFragment()
                 return@OnNavigationItemSelectedListener true
             }
