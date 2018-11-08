@@ -1,6 +1,7 @@
 package edu.is3261.kotlearn.fragments.About
 
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatDelegate
@@ -36,17 +37,24 @@ class AboutFirstFragment : Fragment() {
             dayNightSwitch?.isChecked = true
         }
 
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
+        val editor = sharedPref?.edit()
+
         // add listener to toggle night mode
         dayNightSwitch?.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 Log.d("main", "night")
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                activity?.recreate()
+                // set night mode in sharedprefs
+                editor?.putBoolean("isNightMode", true)
+
             } else {
                 Log.d("main", "day")
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                activity?.recreate()
+                editor?.putBoolean("isNightMode", false)
             }
+            editor?.apply()
+            activity?.recreate()
         }
 
         return view

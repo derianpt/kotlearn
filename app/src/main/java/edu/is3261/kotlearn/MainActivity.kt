@@ -1,5 +1,6 @@
 package edu.is3261.kotlearn
 
+import android.content.Context
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
@@ -52,6 +53,13 @@ class MainActivity : AppCompatActivity() {
             createTwitterFeedFragment()
         }
         setContentView(R.layout.activity_main)
+
+        // get night mode setting from sharedprefs & turn it on if needed
+        val sharedPref = this.getPreferences(Context.MODE_PRIVATE)
+        val isNightMode = sharedPref.getBoolean("isNightMode", false)
+        if (isNightMode){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
 
         // init bottom nav
         val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_navigation)
