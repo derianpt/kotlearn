@@ -7,56 +7,9 @@
     android:orientation="vertical"
     tools:context=".fragments.About.AboutParentFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/about_hello"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/news_feed_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Welcome"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textSize="36sp" />
-
-    <TextView
-        android:id="@+id/about_hello2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="To"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textSize="36sp" />
-
-    <TextView
-        android:id="@+id/about_hello3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Kotlearn!"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textSize="36sp" />
-
-    <Switch
-        android:id="@+id/d_n_switch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="20dp"
-        android:gravity="clip_horizontal"
-        android:showText="false"
-        android:text="@string/day_night_switch"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textSize="18sp" />
-
-    <Button
-        android:id="@+id/about_help"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_blue_dark"
-        android:text="Help"
-        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

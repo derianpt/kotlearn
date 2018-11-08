@@ -15,6 +15,11 @@
 
     <!--About-->
     <string name="about_hello">Welcome To Kotlearn!</string>
+    <string name="about_twitter">Read @kotlin and #kotlin on Twitter!</string>
+    <string name="about_reddit">Read r/Kotlin and r/Android on Reddit!</string>
+    <string name="about_quiz">Test your knowledge with our built-in quiz!</string>
+    <string name="about_last">Ready? Let\'s get started!</string>
+
     <!--Common placeholders-->
     <string name="loading_feed">Loading feed...</string>
     <string name="loaded_feed">Loading finished!</string>
