@@ -19,12 +19,21 @@ private const val ARG_PARAM2 = "param2"
  * A simple [Fragment] subclass.
  *
  */
-class QuizLandingFragment : Fragment(){
+class QuizLandingFragment : Fragment() {
 
     private val mOnQuizLandingSelection = View.OnClickListener { item ->
         when (item.id){
             R.id.but_introduction, R.id.image_introduction-> {
                 createQuizIntroductionFragment()
+//                val mAlertDialog = AlertDialog.Builder(activity)
+//                mAlertDialog.setTitle("Introduction")
+//                mAlertDialog.setMessage("This section will test your knowledge on Kotlin coding conventions")
+//                mAlertDialog.setIcon(R.mipmap.ic_launcher)
+//                mAlertDialog.setPositiveButton("Take the Test"){ dialog, id ->
+//                    val toast = Toast.makeText(activity, "yesss", Toast.LENGTH_SHORT)
+//                    toast.setGravity(Gravity.CENTER, 0, 0)
+//                    toast.show()
+//                }
                 return@OnClickListener
             }
             R.id.but_basics, R.id.image_basics-> {
@@ -70,18 +79,21 @@ class QuizLandingFragment : Fragment(){
 
     fun createQuizIntroductionFragment(){
         fragmentManager!!.beginTransaction()
+                .setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left)
                 .replace(R.id.fragmentholder, QuizIntroductionFragment())
                 .addToBackStack(null)
                 .commit()
     }
     fun createQuizBasicsFragment(){
         fragmentManager!!.beginTransaction()
+                .setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left)
                 .replace(R.id.fragmentholder, QuizBasicsFragment())
                 .addToBackStack(null)
                 .commit()
     }
     fun createQuizClassesAndObjectsFragment(){
         fragmentManager!!.beginTransaction()
+                .setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left)
                 .replace(R.id.fragmentholder, QuizClassesAndObjectsFragment())
                 .addToBackStack(null)
                 .commit()

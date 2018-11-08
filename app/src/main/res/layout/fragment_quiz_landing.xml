@@ -2,68 +2,101 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/quizlandinglayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".fragments.Quiz.QuizLandingFragment">
 
-    <LinearLayout
-        android:layout_width="300dp"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_gravity="center"
-        android:gravity="center">
+        android:layout_marginTop="20dp"
+        android:fillViewport="true">
 
-        <ImageView
-            android:id="@+id/image_introduction"
-            android:layout_width="100dp"
-            android:layout_height="83dp"
-            android:layout_gravity="center"
-            android:src="@drawable/introduction"/>
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:orientation="vertical"
+            >
 
-        <Button
-            android:id="@+id/but_introduction"
+            <ImageButton
+                android:id="@+id/image_introduction"
+                android:layout_width="100dp"
+                android:layout_height="83dp"
+                android:layout_gravity="center"
+                android:scaleType="centerInside"
+                android:background="#00000000"
+                android:src="@drawable/introduction" />
+
+            <Button
+                android:id="@+id/but_introduction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:background="#00000000"
+                android:text="@string/introduction"
+                android:textSize="15dp" />
+
+            <ImageButton
+                android:id="@+id/image_basics"
+                android:layout_width="100dp"
+                android:layout_height="83dp"
+                android:layout_gravity="center"
+                android:scaleType="centerInside"
+                android:background="#00000000"
+                android:src="@drawable/basics" />
+
+            <Button
+                android:id="@+id/but_basics"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:background="#00000000"
+                android:text="@string/basics"
+                android:textSize="15dp" />
+
+            <ImageButton
+                android:id="@+id/image_classesAndObjects"
+                android:layout_width="100dp"
+                android:layout_height="83dp"
+                android:layout_gravity="center"
+                android:scaleType="centerInside"
+                android:background="#00000000"
+                android:src="@drawable/classesandobjects" />
+
+            <Button
+                android:id="@+id/but_classesAndObjects"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:background="#00000000"
+                android:text="@string/classesAndObjects"
+                android:textSize="15dp" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/image_introduction_expand"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:textSize="15dp"
-            android:layout_gravity="center"
-            android:background="#00000000"
-            android:text="@string/introduction"/>
+            android:layout_height="match_parent"
+            android:visibility="invisible">
 
-        <ImageView
-            android:id="@+id/image_basics"
-            android:layout_width="100dp"
-            android:layout_height="83dp"
-            android:layout_gravity="center"
-            android:src="@drawable/basics"/>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="63dp"
+                android:layout_weight="1"
+                android:src="@drawable/introduction" />
 
-        <Button
-            android:id="@+id/but_basics"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:textSize="15dp"
-            android:layout_gravity="center"
-            android:background="#00000000"
-            android:text="@string/basics" />
-
-        <ImageView
-            android:id="@+id/image_classesAndObjects"
-            android:layout_width="100dp"
-            android:layout_height="83dp"
-            android:src="@drawable/classesandobjects"
-            android:layout_gravity="center"/>
-
-        <Button
-            android:id="@+id/but_classesAndObjects"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:textSize="15dp"
-            android:layout_gravity="center"
-            android:background="#00000000"
-            android:text="@string/classesAndObjects" />
-    </LinearLayout>
+        </android.support.v7.widget.CardView>
 
 </LinearLayout>
