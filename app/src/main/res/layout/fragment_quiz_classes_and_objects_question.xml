@@ -9,22 +9,39 @@
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="0.25"
+        android:elevation="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:layout_marginStart="20dp"
             android:orientation="horizontal">
 
+            <!--THE BACK BUTTON-->
+            <ImageButton
+                android:id="@+id/classesAndObjectsBackButton"
+                android:layout_width="50sp"
+                android:layout_height="33sp"
+                android:layout_gravity="center"
+                android:scaleType="centerInside"
+                android:background="#00000000"
+                android:src="@drawable/back" />
+
+            <!--THE EGG-->
             <ImageView
                 android:id="@+id/image_classesAndObjects"
                 android:layout_width="0dp"
-                android:layout_height="70dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_gravity="center"
+                android:maxHeight="80dp"
+                android:adjustViewBounds="true"
                 android:src="@drawable/classesandobjects" />
 
+            <!-- INTRODUCTION -->
             <TextView
                 android:id="@+id/textViewClassesAndObjects"
                 android:layout_width="0dp"
@@ -33,18 +50,18 @@
                 android:gravity="center"
                 android:layout_weight="4"
                 android:text="@string/classesAndObjects"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:fontFamily="sans-serif-light"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
         </LinearLayout>
-
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="8"
-        android:scaleX="0.7"
-        android:scaleY="0.7"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scaleX="0.8"
+        android:scaleY="0.8"
         android:gravity="center"
         android:layout_gravity="center"
         card_view:cardCornerRadius="10dp">
@@ -59,7 +76,7 @@
                 android:id="@+id/tv_classes_and_objects_question"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2"
+                android:layout_weight="3"
                 android:gravity="center"
                 android:fontFamily="sans-serif-light"
                 android:textSize="25sp"
@@ -70,8 +87,9 @@
             <RadioGroup
                 android:id="@+id/radioClassesAndObjectsGroup1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_height="0dp"
+                android:layout_weight="8"
+                android:padding="2dp"
                 android:fontFamily="sans-serif-light"
                 android:gravity="center">
 
@@ -82,8 +100,8 @@
                     android:layout_gravity="center_vertical"
                     android:text="RadioButton"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
+                    android:paddingStart="20dp"
+                    android:paddingTop="15dp"
                     android:paddingLeft="10dp"
                     android:background="@drawable/radiobutton_background" />
 
@@ -92,9 +110,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:paddingStart="20dp"
+                    android:paddingTop="15dp"
                     android:paddingLeft="10dp"
                     android:background="@drawable/radiobutton_background"/>
 
@@ -103,9 +121,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:paddingStart="20dp"
+                    android:paddingTop="15dp"
                     android:paddingLeft="10dp"
                     android:background="@drawable/radiobutton_background"/>
 
@@ -114,11 +132,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
+                    android:paddingStart="20dp"
+                    android:paddingTop="15dp"
+                    android:background="@drawable/radiobutton_background"
                     android:paddingLeft="10dp"
-                    android:background="@drawable/radiobutton_background"/>
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    />
 
             </RadioGroup>
             <!--<Button-->
@@ -141,9 +160,11 @@
                 <Button
                     android:id="@+id/but_classes_and_objects_next"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_gravity="bottom|center"
                     android:background="@drawable/button_background"
+                    android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
                     android:textColor="#000000"
                     android:textAppearance="?android:attr/textAppearanceLarge"
@@ -151,7 +172,7 @@
                     android:fontFamily="sans-serif-light"
                     android:padding="2dp"
                     android:text="@string/butNext"
-                    android:elevation="2dp"/>
+                    android:elevation="20dp"/>
 
             </LinearLayout>
         </LinearLayout>

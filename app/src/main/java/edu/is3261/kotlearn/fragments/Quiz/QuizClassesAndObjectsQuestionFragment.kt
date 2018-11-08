@@ -46,7 +46,7 @@ class QuizClassesAndObjectsQuestionFragment : Fragment() {
         val radioButton4 = view.findViewById<RadioButton>(R.id.radioClassesAndObjectsButton4)
         val radioGroup1 = view.findViewById<RadioGroup>(R.id.radioClassesAndObjectsGroup1)
 
-        val butNext = view.findViewById<Button>(R.id.but_intro_next)
+        val butNext = view.findViewById<Button>(R.id.but_classes_and_objects_next)
         butNext.setOnClickListener {
             if (radioGroup1.getCheckedRadioButtonId() == -1)
             {
@@ -66,9 +66,19 @@ class QuizClassesAndObjectsQuestionFragment : Fragment() {
                     //if all questions not finished, keep going!
                     if (qid < 4){
                         currentQuestion = questionList.get(qid)
-                        if (qid === 3){
+                        if (qid === 3) {
                             butNext.setText("Finish")
+                            butNext.setOnClickListener {
+                                val toast = Toast.makeText(activity, "Congratulations! You have completed all levels!", Toast.LENGTH_SHORT)
+                                toast.setGravity(Gravity.CENTER, 0, 0)
+                                toast.show()
+                                fragmentManager!!.beginTransaction()
+                                        .setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_right, R.anim.slide_out_left)
+                                        .replace(R.id.fragmentholder, QuizLandingFragment())
+                                        .addToBackStack(null)
+                                        .commit()
 
+                            }
                         }
                         setQuestionView(questionText, radioButton1, radioButton2, radioButton3, radioButton4)
                     }

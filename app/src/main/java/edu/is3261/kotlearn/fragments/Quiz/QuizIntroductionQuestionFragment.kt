@@ -72,7 +72,17 @@ class QuizIntroductionQuestionFragment : Fragment() {
                         currentQuestion = questionList.get(qid)
                         if (qid === 3){
                             butNext.setText("Finish")
+                            butNext.setOnClickListener {
+                                val toast = Toast.makeText(activity, "Congratulations! You have completed the level", Toast.LENGTH_SHORT)
+                                toast.setGravity(Gravity.CENTER, 0, 0)
+                                toast.show()
+                                fragmentManager!!.beginTransaction()
+                                        .setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_right, R.anim.slide_out_left)
+                                        .replace(R.id.fragmentholder, QuizBasicsFragment())
+                                        .addToBackStack(null)
+                                        .commit()
 
+                            }
                         }
                         setQuestionView(questionText, radioButton1, radioButton2, radioButton3, radioButton4)
                     }

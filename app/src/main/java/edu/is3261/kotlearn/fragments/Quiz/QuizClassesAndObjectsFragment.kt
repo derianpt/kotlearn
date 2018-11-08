@@ -37,7 +37,7 @@ class QuizClassesAndObjectsFragment : Fragment() {
         testYourselfButton?.setOnClickListener {
             fragmentManager!!.beginTransaction()
                     .setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_right, R.anim.slide_out_left)
-                    .replace(R.id.fragmentholder, QuizClassesAndObjectsFragment())
+                    .replace(R.id.fragmentholder, QuizClassesAndObjectsQuestionFragment())
                     .addToBackStack(null)
                     .commit()
         }
